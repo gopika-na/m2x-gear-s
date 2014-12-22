@@ -1,6 +1,15 @@
 #Tizen JavaScript library for M2X#
 
-####Easily develop IoT applications for the Samsung Gear S using the Tizen JS library for M2X####
+####Getting Started####
+
+1. Signup for an M2X Account: https://m2x.att.com/signup
+2. Obtain your *Master Key* from the Master Keys tab of your Account Settings: https://m2x.att.com/account
+3. Create your first Data Source Blueprint and copy its *Feed ID*: https://m2x.att.com/blueprints
+4. Review the M2X API Documentation: https://m2x.att.com/developer/documentation/overview
+
+If you have questions about any M2X specific terms, please consult the M2X glossary: https://m2x.att.com/developer/documentation/glossary
+
+####Overview####
 
 This library will try to participate as a module if an AMD loader is available.
 
@@ -10,12 +19,12 @@ Example:
         var myM2X = new M2X({key:'yourm2xkeygoeshere'});
         ...
     });
- 
-Unless stated otherwise, all functions in this library are asynchronous and a callback function should be provided. 
+
+Unless stated otherwise, all functions in this library are asynchronous and a callback function should be provided.
 
 
 Callback signature
- 
+
     function onSuccess(result) {...}
 
 where result is an object with following attributes
@@ -31,8 +40,7 @@ Instead of creating a new instance whenever you need to use a new key, you can u
 
     myM2X.setKey("yournewkeygoeshere");
 
-Now all subsequent calls will use the new key. Please note that ```setKey``` will not verify the provided key. M2X will return an error if your key is not valid or does not have the appropriate permission to execute a specific request 
-
+Now all subsequent calls will use the new key. Please note that ```setKey``` will not verify the provided key. M2X will return an error if your key is not valid or does not have the appropriate permission to execute a specific request
 
 ###List of available API###
 
@@ -155,7 +163,7 @@ Example
                         "at" : timestamp,
                         "value" : 789
                     }]
-                },                 
+                },
                 function(msg) {
                        //On success, M2X will return HTTP code 202 (accepted)
                        //You may confirm by looking at msg.status
@@ -199,6 +207,9 @@ Gear S demo apps are available in the ``demo`` folder
 
 ###Documentation###
 A detailed documentation of all the available APIs supported by this library is available in the ``doc`` folder
-    
+
 ###Acknowledgements###
+
+The credit of creating this library goes to Samsung and AT&T Services, Inc.
+
 This library was derived from the Javascript M2X API Client available at https://github.com/attm2x/m2x-javascript
