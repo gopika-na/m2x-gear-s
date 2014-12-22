@@ -1,4 +1,5 @@
-#Samsung Gear S (Tizen JavaScript) library for M2X (V1 API Only)#
+##Samsung Gear S (Tizen JavaScript) library for M2X##
+###*(V1 API Only)*###
 
 ####Getting Started####
 
