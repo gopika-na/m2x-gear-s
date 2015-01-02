@@ -351,7 +351,7 @@
             },
             /**
              * Retrieves a list of data streams associated with the specified device
-             * @method getDatastreams
+             * @method getDataStreams
              * @async
              * @param {String} id Device ID
              * @param {Function} onSuccess Function to call back if operation is successful
@@ -1210,11 +1210,12 @@
      */    
     M2XAPI.getISO8601Timestamp = function(timestamp) {
         var t;
-        if (Object.prototype.toString.call(timestamp) === '[object Date]' 
-            || (typeof timestamp === 'number' && timestamp === (timestamp | 0))) {
-            t = timestamp;
+        if (Object.prototype.toString.call(timestamp) === '[object Date]' ) {
+        	t = timestamp;
+        } else if (/^[0-9]+$/.test(''+timestamp)) {
+            t = new Date(timestamp);
         } else {
-            t = new Date.now();
+            t = new Date();
         }
         return t.toISOString();
     };
