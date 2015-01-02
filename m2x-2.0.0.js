@@ -241,16 +241,16 @@
              * @param {Function} [onError] Function to call back if operation fails
              */
             search : function (options,cbS,cbE) {
-                var onSuccess = cbS,
+                var urlparams = options,
+                    onSuccess = cbS,
                     onError = cbE;
                 
-                if (Utils.isFunc(options)) {
+                if (Utils.isFunc(urlparams)) {
+                    urlparams = {};
                     onSuccess = options;
-                    if (Utils.isFunc(cbS)) {
-                        onError = cbS;
-                    }
+                    onError = cbS;
                 }
-                request({verb:"GET", path: "/devices", urlparams : options, onSuccess : onSuccess, onError: onError});
+                request({verb:"GET", path: "/devices", urlparams : urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
              * Retrieve the list of device groups for the authenticated user.
@@ -261,16 +261,16 @@
              * @param {Function} [onError] Function to call back if operation fails
              */
             searchDeviceGroups : function (options,cbS,cbE) {
-                var onSuccess = cbS,
+                var urlparams = options,
+                    onSuccess = cbS,
                     onError = cbE;
                 
-                if (Utils.isFunc(options)) {
+                if (Utils.isFunc(urlparams)) {
+                    urlparams = {};
                     onSuccess = options;
-                    if (Utils.isFunc(cbS)) {
-                        onError = cbS;
-                    }
+                    onError = cbS;
                 }
-                request({verb:"GET", path: "/devices/groups", urlparams : options, onSuccess : onSuccess, onError: onError});
+                request({verb:"GET", path: "/devices/groups", urlparams : urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
              * Creates a new device
