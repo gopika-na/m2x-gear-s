@@ -29,52 +29,50 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-define(['lib/m2x'],function(M2X) {
+define(['lib/m2x-2.0.0'],function(M2X) {
 
 	var m2xclient,
-		blueprintID,
+		deviceID,
 		duid;
 	
 	//Push data to M2X every time we get new data from the sensor 
 	$(document).on("newuvsensordata", function(event) {
-		var blueprintID = localStorage.getItem("m2x-blueprint-id");
+		var m2xDeviceID = localStorage.getItem("m2x-device-id");
 
-		if (blueprintID !== null) {
+		if (m2xDeviceID !== null) {
 			console.log("Updating stream...");
-			m2xclient.feed.updateDataStreamValue(blueprintID,"uv",{value:event.message,at: M2X.getISO8601Timestamp(event.time)}, function() {
+			m2xclient.device.updateDataStreamValue(m2xDeviceID,"uv",{"value":event.message,"timestamp": M2X.getISO8601Timestamp(event.time)}, function() {
 				console.log("Stream updated");
 			}, function(error) {
-				console.log("An error ocurred while trying to update the stream. " + JSON.stringify(error));
+				console.log("An error occurred while trying to update the stream. " + JSON.stringify(error));
 			});
 		}
 	});
 	
 	//Connect to M2X when the module is loaded
 	m2xclient = new M2X({key:'YOUR_M2X_KEY_GOES_HERE'});
-	//Use the device ID to identify the blueprint
+	//Use the device ID to identify the device in M2X
 	duid = tizen.systeminfo.getCapabilities().duid;
 	
-	//Check if device has a Data Source ID stored locally
-	var id = localStorage.getItem("m2x-blueprint-id");
-	console.log("blueprint ID " + id);
+	//Check if device has a M2X Device ID stored locally
+	var id = localStorage.getItem("m2x-device-id");
+	console.log("Device ID " + id);
 
 	if ( id === null ) {
-		console.log("Creating blueprint...")
-		//We haven't registered this device, let's do it...
-		m2xclient.blueprint.create({name:duid,visibility:"private"},function(blueprint) {
-			blueprintID = blueprint.response.id;
-			//Creates stream for the blueprint. We could add this 
-			//data source to an existing batch to inherit the streams
-			//but this is just for demo purposes
-			m2xclient.feed.updateStream(blueprintID,"uv",{ "unit": { "label": "UV Index", symbol: "UV Index" }, "type": "numeric" }, 
+		console.log("Registering device...")
+		//We haven't registered this device...
+		m2xclient.device.create({name:duid,visibility:"private"},function(msg) {
+			deviceID = msg.response.id;
+			//Creates a stream for the device
+			m2xclient.device.updateStream(deviceID,"uv",{ "unit": { "label": "UV Index", symbol: "UV Index" }, "type": "numeric" }, 
 			   function() {
 				console.log("Stream successfully created");
-				localStorage.setItem("m2x-blueprint-id",blueprintID);
+				localStorage.setItem("m2x-device-id",deviceID);
 			}, function(error) {
-				console.log("An error ocurred while trying to create the stream " + error);
+				console.log("An error occurred while trying to create the stream " + JSON.stringify(error));
 			});
 		}, function(error) {
-			console.log("An error ocurred while trying to create the blueprint " + error);
+			console.log("An error occurred while trying to register the device in M2X " + JSON.stringify(error));
 		});
 	}
 	

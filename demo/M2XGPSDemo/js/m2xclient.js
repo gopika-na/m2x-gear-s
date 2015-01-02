@@ -43,17 +43,17 @@ define(['lib/m2x'],function(M2X) {
 			m2xclient.feed.updateDataStreamValue(blueprintID,"longitude",{value:event.message.coords.longitude,at: M2X.getISO8601Timestamp(event.time)}, function() {
 				console.log("Longitude Stream updated");
 			}, function(error) {
-				console.log("An error ocurred while trying to update the Longitude stream. " + error);
+				console.log("An error occurred while trying to update the Longitude stream. " + error);
 			});
 			m2xclient.feed.updateDataStreamValue(blueprintID,"latitude",{value:event.message.coords.latitude,at: M2X.getISO8601Timestamp(event.time)}, function() {
 				console.log("Latitude Stream updated");
 			}, function(error) {
-				console.log("An error ocurred while trying to update the Latitude stream. " + error);
+				console.log("An error occurred while trying to update the Latitude stream. " + error);
 			});
 			m2xclient.feed.updateDataStreamValue(blueprintID,"altitude",{value:event.message.coords.altitude,at: M2X.getISO8601Timestamp(event.time)}, function() {
 				console.log("Altitude Stream updated");
 			}, function(error) {
-				console.log("An error ocurred while trying to update the Altitude stream. " + error);
+				console.log("An error occurred while trying to update the Altitude stream. " + error);
 			});
 		    m2xclient.feed.updateLocation(blueprintID, {"latitude": event.message.coords.latitude, "longitude": event.message.coords.longitude,"elevation": event.message.coords.altitude}, function(r) {
 		        console.log("UpdateLocation succeeded - data can be viewed on the location tab / map");
@@ -88,22 +88,22 @@ define(['lib/m2x'],function(M2X) {
 						console.log("Longitude Stream successfully created");
 						localStorage.setItem("m2x-blueprint-id",blueprintID);
 					}, function(error) {
-						console.log("An error ocurred while trying to create the Longitude stream " + error);
+						console.log("An error occurred while trying to create the Longitude stream " + error);
 					});
 			m2xclient.feed.updateStream(blueprintID,"Latitude",{ "unit": { "label": "Latitude", symbol: "Degrees" }, "type": "numeric" },function() {
 						console.log("Latitude Stream successfully created");
 						localStorage.setItem("m2x-blueprint-id",blueprintID);
 					}, function(error) {
-						console.log("An error ocurred while trying to create the Latitude stream " + error);
+						console.log("An error occurred while trying to create the Latitude stream " + error);
 					});
 			m2xclient.feed.updateStream(blueprintID,"Altitude",{ "unit": { "label": "Altitude", symbol: "ft" }, "type": "numeric" },function() {
 						console.log("Altitude Stream successfully created");
 						localStorage.setItem("m2x-blueprint-id",blueprintID);
 					}, function(error) {
-						console.log("An error ocurred while trying to create the Altitude stream " + error);
+						console.log("An error occurred while trying to create the Altitude stream " + error);
 					});
 		}, function(error) {
-			console.log("An error ocurred while trying to create the blueprint " + JSON.stringify(error));
+			console.log("An error occurred while trying to create the blueprint " + JSON.stringify(error));
 		});
 	}
 	
