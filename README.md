@@ -5,9 +5,9 @@
 1. Signup for an [M2X Account](https://m2x.att.com/signup).
 2. Obtain your _Master Key_ from the Master Keys tab of your [Account Settings](https://m2x.att.com/account) screen.
 2. Create your first [Device](https://m2x.att.com/devices) and copy its _Device ID_.
-3. Review the [M2X API Documentation](https://m2x.att.com/developer/documentation/overview).
+3. Review the [M2X API Documentation](https://m2x.att.com/developer/documentation/v2/overview).
 
-If you have questions about any M2X specific terms, please consult the M2X glossary: https://m2x.att.com/developer/documentation/glossary
+If you have questions about any M2X specific terms, please consult the [M2X glossary] (https://m2x.att.com/developer/documentation/v2/glossary).
 
 ####Overview####
 
