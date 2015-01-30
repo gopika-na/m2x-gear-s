@@ -29,84 +29,109 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-define(['lib/m2x'],function(M2X) {
-
-	var m2xclient,
-		blueprintID,
-		duid;
-	$(document).on("newlocationdata", function(event) {
-
-		var blueprintID = localStorage.getItem("m2x-blueprint-id");
-
-		if (blueprintID !== null) {
-			console.log("Updating streams..." + JSON.stringify(event.message));
-			m2xclient.feed.updateDataStreamValue(blueprintID,"longitude",{value:event.message.coords.longitude,at: M2X.getISO8601Timestamp(event.time)}, function() {
-				console.log("Longitude Stream updated");
-			}, function(error) {
-				console.log("An error occurred while trying to update the Longitude stream. " + error);
-			});
-			m2xclient.feed.updateDataStreamValue(blueprintID,"latitude",{value:event.message.coords.latitude,at: M2X.getISO8601Timestamp(event.time)}, function() {
-				console.log("Latitude Stream updated");
-			}, function(error) {
-				console.log("An error occurred while trying to update the Latitude stream. " + error);
-			});
-			m2xclient.feed.updateDataStreamValue(blueprintID,"altitude",{value:event.message.coords.altitude,at: M2X.getISO8601Timestamp(event.time)}, function() {
-				console.log("Altitude Stream updated");
-			}, function(error) {
-				console.log("An error occurred while trying to update the Altitude stream. " + error);
-			});
-		    m2xclient.feed.updateLocation(blueprintID, {"latitude": event.message.coords.latitude, "longitude": event.message.coords.longitude,"elevation": event.message.coords.altitude}, function(r) {
-		        console.log("UpdateLocation succeeded - data can be viewed on the location tab / map");
-		    }, function(error) {
-		        console.log("UpdateLocation - error - " + JSON.stringify(error));
-		    });
-		}
-	});
-	
-	//Connect to M2X when the module is loaded
-	m2xclient = new M2X({key:'EnterYourOwnMasterKeyhere'});
-	//Use the device ID to identify the blueprint
-	duid = tizen.systeminfo.getCapabilities().duid;
-	if (duid == ''){
-		duid = 'duidtizenemulator';
-		console.log("Device ID is blank; this is an emulator and we need to make up the duid: " + duid);
-	}
-	
-	//Check if device has a Data Source ID stored locally
-	var id = localStorage.getItem("m2x-blueprint-id");
-	console.log("blueprint ID " + id);
-
-	if ( id === null ) {
-		console.log("Creating blueprint...");
-		//We haven't registered this device, let's do it...
-		m2xclient.blueprint.create({name:duid,visibility:"private"},function(blueprint) {
-			blueprintID = blueprint.response.id;
-			//Creates stream for the blueprint. We could add this 
-			//data source to an existing batch to inherit the streams
-			//but this is just for demo purposes
-			m2xclient.feed.updateStream(blueprintID,"Longitude",{ "unit": { "label": "Longitude", symbol: "Degrees" }, "type": "numeric" },function() {
-						console.log("Longitude Stream successfully created");
-						localStorage.setItem("m2x-blueprint-id",blueprintID);
-					}, function(error) {
-						console.log("An error occurred while trying to create the Longitude stream " + error);
-					});
-			m2xclient.feed.updateStream(blueprintID,"Latitude",{ "unit": { "label": "Latitude", symbol: "Degrees" }, "type": "numeric" },function() {
-						console.log("Latitude Stream successfully created");
-						localStorage.setItem("m2x-blueprint-id",blueprintID);
-					}, function(error) {
-						console.log("An error occurred while trying to create the Latitude stream " + error);
-					});
-			m2xclient.feed.updateStream(blueprintID,"Altitude",{ "unit": { "label": "Altitude", symbol: "ft" }, "type": "numeric" },function() {
-						console.log("Altitude Stream successfully created");
-						localStorage.setItem("m2x-blueprint-id",blueprintID);
-					}, function(error) {
-						console.log("An error occurred while trying to create the Altitude stream " + error);
-					});
-		}, function(error) {
-			console.log("An error occurred while trying to create the blueprint " + JSON.stringify(error));
-		});
-	}
-	
-	return function() {}
-	
+define(['m2x', 'jquery'], function(M2X) {
+    //requires AT&T M2X API v2
+    var m2xclient,
+        deviceID,
+        duid;
+    $(document).on("newlocationdata", function(event) {
+        var m2xDeviceID = localStorage.getItem("m2x-device-id");
+        if (m2xDeviceID !== null) {
+            //console.log("Updating streams..." + JSON.stringify(event.message));
+            if (true) { //update all 3 streams in one call
+                m2xclient.device.postMultipleValues(m2xDeviceID, {
+                    "latitude": [{
+                            "timestamp": M2X.getISO8601Timestamp(event.time),
+                            "value": event.message.coords.latitude
+                        }
+                    ],
+                    "longitude": [{
+                            "timestamp": M2X.getISO8601Timestamp(event.time),
+                            "value": event.message.coords.longitude
+                        }
+                    ]
+                }, function() {
+                    console.log("postMultipleValues - Streams successfully updated.");
+                }, function(error) {
+                    console.log("postMultipleValues - error - " + JSON.stringify(error));
+                });
+            } else { //update the streams individually
+                m2xclient.device.updateDataStreamValue(m2xDeviceID, "longitude", {
+                    value: event.message.coords.longitude,
+                    timestamp: M2X.getISO8601Timestamp(event.time)
+                }, function() {
+                    console.log("Longitude Stream updated");
+                }, function(error) {
+                    console.log("An error occurred while trying to update the Longitude stream. " + JSON.stringify(error));
+                });
+                m2xclient.device.updateDataStreamValue(m2xDeviceID, "latitude", {
+                    value: event.message.coords.latitude,
+                    timestamp: M2X.getISO8601Timestamp(event.time)
+                }, function() {
+                    console.log("Latitude Stream updated");
+                }, function(error) {
+                    console.log("An error occurred while trying to update the Latitude stream. " + JSON.stringify(error));
+                });
+            }
+            //update the location tab
+            m2xclient.device.updateLocation(m2xDeviceID, {
+                "latitude": event.message.coords.latitude,
+                "longitude": event.message.coords.longitude,
+            }, function() {
+                console.log("UpdateLocation succeeded - data can be viewed on the location tab / map");
+            }, function(error) {
+                console.log("UpdateLocation - error - " + JSON.stringify(error));
+            });
+        }
+    });
+    //Connect to M2X when the module is loaded
+    console.log("WARNING - Make sure you enter your AT&T M2X Master Key in the m2xclient.js module.");
+    m2xclient = new M2X({key:'EnterYourOwnMasterKeyhere'});
+    //Use the device ID to identify the device
+    duid = tizen.systeminfo.getCapabilities().duid;
+    console.log("duid is " + duid);
+    if (duid == '') {
+        duid = 'duidtizenemulator';
+        console.log("duid is blank; this is an emulator and we need to make up the duid: " + duid);
+    }
+    //Check if device has a Data Source ID stored locally
+    var id = localStorage.getItem("m2x-device-id");
+    console.log("Device ID is " + id);
+    if (id === null) {
+        console.log("Registering device...")
+        //We haven't registered this device, let's do it...
+        m2xclient.device.create({
+            name: duid,
+            visibility: "private"
+        }, function(msg) {
+            deviceID = msg.response.id;
+            //Create the desired streams for the device
+            m2xclient.device.updateStream(deviceID, "Longitude", {
+                "unit": {
+                    "label": "Longitude",
+                    symbol: "Degrees"
+                },
+                "type": "numeric"
+            }, function() {
+                console.log("Longitude Stream successfully created");
+                localStorage.setItem("m2x-device-id", deviceID);
+            }, function(error) {
+                console.log("An error occurred while trying to create the Longitude stream " + JSON.stringify(error));
+            });
+            m2xclient.device.updateStream(deviceID, "Latitude", {
+                "unit": {
+                    "label": "Latitude",
+                    symbol: "Degrees"
+                },
+                "type": "numeric"
+            }, function() {
+                console.log("Latitude Stream successfully created");
+            }, function(error) {
+                console.log("An error occurred while trying to create the Latitude stream " + JSON.stringify(error));
+            });
+        }, function(error) {
+            console.log("An error occurred while trying to create deviceID: " + JSON.stringify(error));
+        });
+    }
+    return function() {}
 });
