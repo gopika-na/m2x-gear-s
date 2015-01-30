@@ -29,57 +29,90 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-define(['m2xclient', 'plot'], function(m, p) {
-
-    $(document).ready(function() {
-
-        var intervalID;
-
-        document.addEventListener('tizenhwkey', function(e) {
-            if (e.keyName == "back") {
-                tizen.application.getCurrentApplication().exit();
-                if (typeof intervalID !== 'undefined') {
-                    clearInterval(intervalID);
-                }
+(function() {
+    'use strict';
+    require.config({
+        baseUrl: 'js/lib',
+        //waitSeconds: 200,
+        paths: {
+            'jquery': 'jquery-1.9.1',
+            'jquery-ui-map-extensions': 'mapui/jquery.ui.map.extensions.js',
+            'jquery-ui-map': 'mapui/jquery.ui.map',
+            'm2xclient': '../m2xclient',
+            'locdata_map': '../locdata_map',
+            'locdata_show': '../locdata_show',
+        },
+        shim: {
+            'jquery-ui-map-extensions': {
+                'deps': ['jquery-ui-map']
+            },
+            'jquery-ui-map': {
+                'deps': ['jquery']
+            },
+            'jquery': {
+                'exports': '$'
             }
-        });
-
-        if (navigator.geolocation) {
-            console.log("Requesting location...");
-            intervalID = setInterval(function() {
-                navigator.geolocation.getCurrentPosition(function(locationData) {
-                    console.log("Got location data: " + JSON.stringify(locationData));
-                    $.event.trigger({
-                        type: "newlocationdata",
-                        message: locationData,
-                        time: new Date()
-                    });
-                }, function(error) {
-                    console.log("error! " + JSON.stringify(error));
-                });
-            }, 30000);
-
-        } else {
-            console.log("Geolocation is not supported by this device (or emulator).  Generating fake data for development purposes...");
-            //The following section contain code that generates fake location data
-            //This is intended for development purposes only to generate interesting data when using the Tizen emulator 
-            //(the Emulator does not support Location calls)
-        	function randomBetween(min,max){return Math.random()*(max-min+1)+min;};
-            intervalID = setInterval(function() {
-                var fakeLocationData = {
-                    coords: {
-                        longitude: Number(-randomBetween(122.5, 123).toFixed(12)), //Puget Sound area
-                        latitude: Number(randomBetween(47.5, 48).toFixed(12)),
-                        altitude: Math.floor(randomBetween(-300, 30000)) // Death Valley at -282 feet (below sea level)
-                    },
-                };
-                console.log("Faked location data: " + JSON.stringify(fakeLocationData));
-                $.event.trigger({
-                    type: "newlocationdata",
-                    message: fakeLocationData,
-                    time: new Date()
-                });
-            }, 30000);
         }
     });
-});
+
+    require(['jquery',
+        //plot location on a map /OR/ show location values (no map)
+        'locdata_map', //show location on a map
+        //'locdata_show', //show location values 
+        'm2xclient' //upload location values to AT&T M2X
+    ],
+
+    function() {
+        function randomBetween(min, max) {
+            return Math.random() * (max - min + 1) + min;
+        };
+        $(document).ready(function() {
+            var intervalID;
+            document.addEventListener('tizenhwkey', function(e) {
+                if (e.keyName == "back") {
+                    tizen.application.getCurrentApplication().exit();
+                    if (typeof intervalID !== 'undefined') {
+                        clearInterval(intervalID);
+                    }
+                }
+            });
+            $('#mapcanvas').empty().append($('<ul>').append($('<li/>', {
+                text: 'Fetching location. Please wait...'
+            })));
+            if (navigator.geolocation) {
+            	console.log("Geolocation is supported by this device.  Setting up the update frequency...");
+                intervalID = setInterval(function() {
+                    navigator.geolocation.getCurrentPosition(function(locationData) {
+                        console.log("Actual location data: " + JSON.stringify(locationData));
+                        $.event.trigger({
+                            type: "newlocationdata",
+                            message: locationData,
+                            time: new Date()
+                        });
+                    }, function(error) {
+                        console.log("error! " + JSON.stringify(error));
+                    });
+                }, 30000); //Update period in mSecs 
+            } else {
+                console.log("Geolocation is not supported by this device or Tizen emulator.  Generating fake data for development purposes...");
+                //The following code is intended for development purposes only to generate location data when using the Tizen emulator 
+                //(The Emulator does not support geolocation calls)
+                intervalID = setInterval(function() {
+                    var fakeLocationData = {
+                        coords: {
+                            longitude: Number(-randomBetween(122.5, 123).toFixed(12)), //Puget Sound area
+                            latitude: Number(randomBetween(47.5, 48).toFixed(12)),
+                            altitude: Math.floor(randomBetween(-300, 30000)) // Death Valley at -282 feet (below sea level)
+                        },
+                    };
+                    console.log("Fake location data: " + JSON.stringify(fakeLocationData));
+                    $.event.trigger({
+                        type: "newlocationdata",
+                        message: fakeLocationData,
+                        time: new Date()
+                    });
+                }, 10000);
+            }
+        });
+    });
+})();
