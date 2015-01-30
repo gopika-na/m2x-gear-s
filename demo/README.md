@@ -6,4 +6,4 @@ These examples illustrate the following:
 * How to use Open Source libraries such as RequireJS, jQuery and CharJS to build a Gear S application
 
 ####IMPORTANT####
-Before building/running these demos, YOU MUST REPLACE the bogus M2X key in m2xclient.js with your own master key and the bogus Google Map key in locdata_map.js (https://developers.google.com/maps/documentation/javascript/tutorial#api_key)
+Before building/running these demos, YOU MUST REPLACE the bogus M2X key in m2xclient.js with your own master key for both demo apps and the bogus Google Map key in locdata_map.js for the M2XGPSDemo app (https://developers.google.com/maps/documentation/javascript/tutorial#api_key)
