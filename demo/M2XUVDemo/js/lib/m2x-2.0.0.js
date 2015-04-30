@@ -253,14 +253,14 @@
                 request({verb:"GET", path: "/devices", urlparams : urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
-             * Retrieve the list of device groups for the authenticated user.
-             * @method searchDeviceGroups
+             * Retrieve the list of device tags for the authenticated user.
+             * @method searchDeviceTags
              * @async
-             * @param {Object} [options] Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Device-Groups for details.
+             * @param {Object} [options] Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Device-Tags for details.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
-            searchDeviceGroups : function (options,cbS,cbE) {
+            searchDeviceTags : function (options,cbS,cbE) {
                 var urlparams = options,
                     onSuccess = cbS,
                     onError = cbE;
@@ -270,7 +270,7 @@
                     onSuccess = options;
                     onError = cbS;
                 }
-                request({verb:"GET", path: "/devices/groups", urlparams : urlparams, onSuccess : onSuccess, onError: onError});
+                request({verb:"GET", path: "/devices/tags", urlparams : urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
              * Creates a new device
