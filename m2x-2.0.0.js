@@ -191,7 +191,6 @@
             
             xhr.onreadystatechange = function() {
                 var response;
-                
                 if (xhr.readyState === 4) {
                     if (!cfg.forward_errors) {
                         if (xhr.status === 200 || xhr.status === 201 || xhr.status === 202 || xhr.status === 204) {

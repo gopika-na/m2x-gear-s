@@ -9,10 +9,12 @@ body {
 
 ul {
 	list-style: none;
+	text-align: left;
+	font-size: 36px
 }
 
 li.info-message {
-	font-size: 2em;
+	font-size: 2.5em;
 }
 .contents {
 	display: flex;

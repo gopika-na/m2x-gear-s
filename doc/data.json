@@ -6,10 +6,8 @@
             "modules": {},
             "classes": {
                 "M2X": 1,
-                "M2X.blueprint": 1,
-                "M2X.batch": 1,
-                "M2X.datasource": 1,
-                "M2X.feed": 1,
+                "M2X.device": 1,
+                "M2X.distribution": 1,
                 "M2X.key": 1
             },
             "fors": {
@@ -35,58 +33,34 @@
             "params": [
                 {
                     "name": "options",
-                    "description": "A object containing the following properties</br>\n<b>key</b>: M2X API key (String,required). Error will be thrown if key is not provided</br>\n<b>api_version</b>: M2X API version (Number(integer),optional). By default, will point to the latest stable M2X API version</br>\n<b>forward_errors</b>: (Boolean).If true, errors will be forwarded to the successful callback (if provided)</br>\n\nExample:\n\n\tvar myM2X = new M2X({key:'yourm2xkeygoeshere'});\n\nUnless stated otherwise, all functions in this library are asynchronous and a callback function should be provided. \nCallback signature\n\n\tonSuccess(result) where result is an object with following attributes\n\t\tresult.status = HTTP code returned by M2X API\n\t\tresult.response = JSON encoded response.        \nAll functions accept an optional onError callback. Errors can be forwarded to the onSuccess callback by setting the 'forward_errors' attribute to true in the constructor",
+                    "description": "A object containing the following properties</br>\n<b>key</b>: M2X API key (String,required). Error will be thrown if key is not provided</br>\n<b>forward_errors</b>: (Boolean).If true, errors will be forwarded to the successful callback (if provided)</br>\n\nExample:\n\n\tvar myM2X = new M2X({key:'yourm2xkeygoeshere'});\n\nUnless stated otherwise, all functions in this library are asynchronous and a callback function should be provided. \nCallback signature\n\n\tonSuccess(result) where result is an object with following attributes\n\t\tresult.status = HTTP code returned by M2X API\n\t\tresult.response = JSON encoded response.        \nAll functions accept an optional onError callback. Errors can be forwarded to the onSuccess callback by setting the 'forward_errors' attribute to true in the constructor",
                     "type": "Object"
                 }
             ]
         },
-        "M2X.blueprint": {
-            "name": "M2X.blueprint",
-            "shortname": "M2X.blueprint",
+        "M2X.device": {
+            "name": "M2X.device",
+            "shortname": "M2X.device",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
             "file": "m2x.js",
-            "line": 237,
-            "description": "M2X Blueprint API facade"
+            "line": 229,
+            "description": "M2X Device API facade"
         },
-        "M2X.batch": {
-            "name": "M2X.batch",
-            "shortname": "M2X.batch",
+        "M2X.distribution": {
+            "name": "M2X.distribution",
+            "shortname": "M2X.distribution",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
             "file": "m2x.js",
-            "line": 324,
-            "description": "M2X Batch API facade"
-        },
-        "M2X.datasource": {
-            "name": "M2X.datasource",
-            "shortname": "M2X.datasource",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "m2x.js",
-            "line": 461,
-            "description": "M2X Data source API facade"
-        },
-        "M2X.feed": {
-            "name": "M2X.feed",
-            "shortname": "M2X.feed",
-            "classitems": [],
-            "plugins": [],
-            "extensions": [],
-            "plugin_for": [],
-            "extension_for": [],
-            "file": "m2x.js",
-            "line": 548,
-            "description": "M2X Feed API facade"
+            "line": 727,
+            "description": "M2X Distribution API facade"
         },
         "M2X.key": {
             "name": "M2X.key",
@@ -97,22 +71,22 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "m2x.js",
-            "line": 980,
+            "line": 1060,
             "description": "M2X Key API facade"
         }
     },
     "classitems": [
         {
             "file": "m2x.js",
-            "line": 243,
-            "description": "Retrieves list of data source blueprints accessible by the authenticated API key.",
+            "line": 235,
+            "description": "Retrieve the list of devices accessible by the authenticated API key that meet the search criteria.",
             "itemtype": "method",
             "name": "search",
             "async": 1,
             "params": [
                 {
                     "name": "options",
-                    "description": "Search options (check https://m2x.att.com/developer/documentation/datasource for details). These options will be added to the URL",
+                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Search-Devices for details.",
                     "type": "Object",
                     "optional": true
                 },
@@ -128,19 +102,47 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.blueprint"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 264,
-            "description": "Creates a new data source blueprint.",
+            "line": 255,
+            "description": "Retrieve the list of device groups for the authenticated user.",
+            "itemtype": "method",
+            "name": "searchDeviceGroups",
+            "async": 1,
+            "params": [
+                {
+                    "name": "options",
+                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Device-Groups for details.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.device"
+        },
+        {
+            "file": "m2x.js",
+            "line": 275,
+            "description": "Creates a new device",
             "itemtype": "method",
             "name": "create",
             "async": 1,
             "params": [
                 {
-                    "name": "blueprint",
-                    "description": "Blueprint object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
+                    "name": "device",
+                    "description": "Device object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
                     "type": "Object"
                 },
                 {
@@ -155,51 +157,24 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.blueprint"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 278,
-            "description": "Retrieves information about an existing data source blueprint.",
-            "itemtype": "method",
-            "name": "getDetails",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Data source blueprint ID",
-                    "type": "String"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.blueprint"
-        },
-        {
-            "file": "m2x.js",
-            "line": 292,
-            "description": "Updates an existing data source blueprint's information.",
+            "line": 288,
+            "description": "Updates an existing Device's information.",
             "itemtype": "method",
             "name": "update",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Data source blueprint ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
-                    "name": "blueprint",
-                    "description": "Blueprint object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
+                    "name": "device",
+                    "description": "Device object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
                     "type": "Object"
                 },
                 {
@@ -214,101 +189,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.blueprint"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 311,
-            "description": "Deletes an existing data source blueprint.",
-            "itemtype": "method",
-            "name": "remove",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Data source blueprint ID",
-                    "type": "String"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.blueprint"
-        },
-        {
-            "file": "m2x.js",
-            "line": 330,
-            "description": "Retrieves list of data source batches accessible by the authenticated API key.",
-            "itemtype": "method",
-            "name": "search",
-            "async": 1,
-            "params": [
-                {
-                    "name": "options",
-                    "description": "Search options (check https://m2x.att.com/developer/documentation/datasource for details). These options will be added to the URL",
-                    "type": "Object",
-                    "optional": true
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.batch"
-        },
-        {
-            "file": "m2x.js",
-            "line": 350,
-            "description": "Creates a new data source batch.",
-            "itemtype": "method",
-            "name": "create",
-            "async": 1,
-            "params": [
-                {
-                    "name": "batch",
-                    "description": "Batch object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
-                    "type": "Object"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.batch"
-        },
-        {
-            "file": "m2x.js",
-            "line": 364,
-            "description": "Retrieves information about an existing data source batch.",
+            "line": 306,
+            "description": "Gets details of an existing Device",
             "itemtype": "method",
             "name": "getDetails",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Data source batch ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -323,344 +216,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.batch"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 379,
-            "description": "Updates an existing data source batch's information",
-            "itemtype": "method",
-            "name": "update",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Data source batch ID",
-                    "type": "String"
-                },
-                {
-                    "name": "batch",
-                    "description": "Batch object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
-                    "type": "Object"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.batch"
-        },
-        {
-            "file": "m2x.js",
-            "line": 397,
-            "description": "Retrieves list of data sources added to the specified batch.",
-            "itemtype": "method",
-            "name": "getDataSources",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Data source batch ID",
-                    "type": "String"
-                },
-                {
-                    "name": "Object",
-                    "description": "options Search parameters.",
-                    "optional": true
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.batch"
-        },
-        {
-            "file": "m2x.js",
-            "line": 414,
-            "description": "Adds a new data source to an existing batch.",
-            "itemtype": "method",
-            "name": "addDataSource",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Data source batch ID",
-                    "type": "String"
-                },
-                {
-                    "name": "serial",
-                    "description": "Data source serial.",
-                    "type": "String"
-                },
-                {
-                    "name": "base_feed_id",
-                    "description": "If provided, all data sources attached to this batch will be based on the referenced base feed.",
-                    "type": "String",
-                    "optional": true
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.batch"
-        },
-        {
-            "file": "m2x.js",
-            "line": 445,
-            "description": "Deletes an existing data source batch.",
-            "itemtype": "method",
-            "name": "remove",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Data source batch ID",
-                    "type": "String"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.batch"
-        },
-        {
-            "file": "m2x.js",
-            "line": 467,
-            "description": "Retrieves list of data sources accessible by the authenticated API key.",
-            "itemtype": "method",
-            "name": "search",
-            "async": 1,
-            "params": [
-                {
-                    "name": "options",
-                    "description": "Search options. See https://m2x.att.com/developer/documentation/datasource#List-Data-Sources for details.",
-                    "type": "Object",
-                    "optional": true
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.datasource"
-        },
-        {
-            "file": "m2x.js",
-            "line": 487,
-            "description": "Creates a new data source",
-            "itemtype": "method",
-            "name": "create",
-            "async": 1,
-            "params": [
-                {
-                    "name": "datasource",
-                    "description": "Data source object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
-                    "type": "Object"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.datasource"
-        },
-        {
-            "file": "m2x.js",
-            "line": 500,
-            "description": "Retrieves information about an existing data source.",
-            "itemtype": "method",
-            "name": "getDetails",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Data source ID",
-                    "type": "String"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.datasource"
-        },
-        {
-            "file": "m2x.js",
-            "line": 514,
-            "description": "Updates an existing data source's information",
-            "itemtype": "method",
-            "name": "update",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Data source ID",
-                    "type": "String"
-                },
-                {
-                    "name": "datasource",
-                    "description": "Data source object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
-                    "type": "Object"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.datasource"
-        },
-        {
-            "file": "m2x.js",
-            "line": 532,
-            "description": "Deletes an existing data source.",
-            "itemtype": "method",
-            "name": "remove",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Data source ID",
-                    "type": "String"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.datasource"
-        },
-        {
-            "file": "m2x.js",
-            "line": 554,
-            "description": "Retrieves the list of feeds accessible by the authenticated API key that meet the search criteria.",
-            "itemtype": "method",
-            "name": "search",
-            "async": 1,
-            "params": [
-                {
-                    "name": "options",
-                    "description": "Search options. See https://m2x.att.com/developer/documentation/feed#List-Search-Feeds for details.",
-                    "type": "Object",
-                    "optional": true
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.feed"
-        },
-        {
-            "file": "m2x.js",
-            "line": 575,
-            "description": "Gets details of an existing feed.",
-            "itemtype": "method",
-            "name": "getDetails",
-            "async": 1,
-            "params": [
-                {
-                    "name": "id",
-                    "description": "Feed ID",
-                    "type": "String"
-                },
-                {
-                    "name": "onSuccess",
-                    "description": "Function to call back if operation is successful",
-                    "type": "Function"
-                },
-                {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails",
-                    "type": "Function",
-                    "optional": true
-                }
-            ],
-            "class": "M2X.feed"
-        },
-        {
-            "file": "m2x.js",
-            "line": 589,
-            "description": "Gets location details of the datasource associated with a specific feed.",
+            "line": 320,
+            "description": "Gets location details of an existing Device",
             "itemtype": "method",
             "name": "getLocation",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -675,24 +243,24 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 604,
-            "description": "Updates the current location of the datasource associated with the specified feed.",
+            "line": 335,
+            "description": "Updates the current location of the specified device",
             "itemtype": "method",
             "name": "updateLocation",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
                     "name": "location",
-                    "description": "Location object. An error will be thrown if latitude(number) or longitude(number) are not provided. See https://m2x.att.com/developer/documentation/feed#Update-Datasource-Location for details",
+                    "description": "Location object. An error will be thrown if latitude(number) or longitude(number) are not provided. See https://m2x.att.com/developer/documentation/v2/device#Update-Device-Location for details",
                     "type": "Object"
                 },
                 {
@@ -707,19 +275,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 621,
-            "description": "Retrieves a list of data streams associated with the specified feed",
+            "line": 352,
+            "description": "Retrieves a list of data streams associated with the specified device",
             "itemtype": "method",
-            "name": "getDatastreams",
+            "name": "getDataStreams",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -734,30 +302,31 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 635,
-            "description": "Updates a data stream associated with the specified feed (if a stream with this name does not exist it gets created).",
+            "line": 366,
+            "description": "Updates a data stream associated with the specified device (if a stream with this name does not exist it gets created).",
             "itemtype": "method",
             "name": "updateStream",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
                     "name": "name",
-                    "description": "Data stream name",
+                    "description": "Data stream name. No spaces or special characters allowed.",
                     "type": "String"
                 },
                 {
                     "name": "stream",
-                    "description": "Create/Update parameters: unit and type. See https://m2x.att.com/developer/documentation/feed#Create-Update-Data-Stream for details.",
-                    "type": "Object"
+                    "description": "Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream. See https://m2x.att.com/developer/documentation/v2/device#Create-Update-Data-Stream for details.",
+                    "type": "Object",
+                    "optional": true
                 },
                 {
                     "name": "onSuccess",
@@ -771,11 +340,11 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 663,
+            "line": 397,
             "description": "Updates the current stream value of the specified stream",
             "itemtype": "method",
             "name": "updateDataStreamValue",
@@ -783,7 +352,7 @@
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -792,8 +361,8 @@
                     "type": "String"
                 },
                 {
-                    "name": "value",
-                    "description": "Should contain a value property with the new stream value. Timestamp can be optionally provided by adding the 'at' property in the object.",
+                    "name": "streamValue",
+                    "description": "Should contain the 'value' property with the new stream value. A timestamp can be optionally provided by adding the 'timestamp' property in the object.",
                     "type": "Object"
                 },
                 {
@@ -808,19 +377,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 684,
-            "description": "Gets details of a specific data stream associated with an existing feed.",
+            "line": 418,
+            "description": "Gets details of a specific data stream associated with an existing device.",
             "itemtype": "method",
             "name": "getDataStreamDetails",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -840,19 +409,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 703,
-            "description": "List values from an existing data stream associated with a specific feed, sorted in reverse chronological order (most recent values first).",
+            "line": 437,
+            "description": "List values from an existing data stream associated with a specific device, sorted in reverse chronological order (most recent values first).",
             "itemtype": "method",
             "name": "getDataStreamValues",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -862,7 +431,7 @@
                 },
                 {
                     "name": "options",
-                    "description": "Filter options. See https://m2x.att.com/developer/documentation/feed#List-Data-Stream-Values for details",
+                    "description": "Filter options. See https://m2x.att.com/developer/documentation/v2/device#List-Data-Stream-Values for details",
                     "type": "Object",
                     "optional": true
                 },
@@ -878,11 +447,11 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 732,
+            "line": 466,
             "description": "Return count, min, max, average and standard deviation stats for the values on an existing data stream. <br>Note: This endpoint <b>only</b> works for numeric streams.",
             "itemtype": "method",
             "name": "getDataStreamStats",
@@ -890,7 +459,7 @@
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -900,7 +469,7 @@
                 },
                 {
                     "name": "options",
-                    "description": "Filter options. See https://m2x.att.com/developer/documentation/feed#Data-Stream-Stats for details",
+                    "description": "Filter options. See https://m2x.att.com/developer/documentation/v2/device#Data-Stream-Stats for details",
                     "type": "Object",
                     "optional": true
                 },
@@ -916,19 +485,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 761,
-            "description": "Posts timestamped values to an existing data stream associated with a specific feed.",
+            "line": 495,
+            "description": "Posts timestamped values to an existing data stream associated with a specific device.",
             "itemtype": "method",
             "name": "postDataStreamValues",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -938,7 +507,7 @@
                 },
                 {
                     "name": "values",
-                    "description": "An array of objects. Each object should contain the attributes 'at' (timestamp in ISO8601 format) and 'value'.",
+                    "description": "An array of objects. Each object should contain the attributes 'timestamp' (in ISO8601 format) and 'value'.",
                     "type": "Array"
                 },
                 {
@@ -953,11 +522,11 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 787,
+            "line": 521,
             "description": "Deletes values in a stream by a date range.",
             "itemtype": "method",
             "name": "deleteDataStreamValues",
@@ -965,7 +534,7 @@
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -990,19 +559,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 807,
-            "description": "Deletes an existing data stream associated with a specific feed.",
+            "line": 541,
+            "description": "Deletes an existing data stream associated with a specific device.",
             "itemtype": "method",
             "name": "deleteDataStream",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -1022,11 +591,11 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 825,
+            "line": 559,
             "description": "Posts values to multiple streams at once.",
             "itemtype": "method",
             "name": "postMultipleValues",
@@ -1034,12 +603,12 @@
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
                     "name": "values",
-                    "description": "An object with one attribute per each stream to be updated. The value of each one of these attributes is an array of timestamped values. See https://m2x.att.com/developer/documentation/feed#Post-Multiple-Values-to-Multiple-Streams for details",
+                    "description": "An object with one attribute per each stream to be updated. The value of each one of these attributes is an array of timestamped values. See https://m2x.att.com/developer/documentation/v2/device#Post-Device-Updates--Multiple-Values-to-Multiple-Streams- for details",
                     "type": "Object"
                 },
                 {
@@ -1054,24 +623,24 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 841,
-            "description": "Retrieves a list of triggers associated with the specified feed.",
+            "line": 575,
+            "description": "Retrieves a list of triggers associated with the specified device.",
             "itemtype": "method",
             "name": "getTriggers",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
                     "name": "options",
-                    "description": "Search options. See https://m2x.att.com/developer/documentation/feed#List-Triggers for details",
+                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Triggers for details",
                     "type": "Object",
                     "optional": true
                 },
@@ -1087,19 +656,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 866,
-            "description": "Creates a new trigger associated with the specified feed.",
+            "line": 600,
+            "description": "Creates a new trigger associated with the specified device.",
             "itemtype": "method",
             "name": "createTrigger",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -1119,19 +688,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 884,
-            "description": "Gets details of a specific trigger associated with an existing feed.",
+            "line": 617,
+            "description": "Gets details of a specific trigger associated with an existing device.",
             "itemtype": "method",
             "name": "getTriggerDetails",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -1151,19 +720,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 899,
-            "description": "Updates an existing trigger associated with the specified feed.",
+            "line": 632,
+            "description": "Updates an existing trigger associated with the specified device.",
             "itemtype": "method",
             "name": "updateTrigger",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -1188,19 +757,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 916,
-            "description": "Tests the specified trigger by firing it with a fake value. See https://m2x.att.com/developer/documentation/feed#Test-Trigger for details",
+            "line": 649,
+            "description": "Tests the specified trigger by firing it with a fake value. See https://m2x.att.com/developer/documentation/v2/device#Test-Trigger for details",
             "itemtype": "method",
             "name": "testTrigger",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -1220,19 +789,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 935,
-            "description": "Deletes an existing trigger associated with a specific feed.",
+            "line": 668,
+            "description": "Deletes an existing trigger associated with a specific device.",
             "itemtype": "method",
             "name": "deleteTrigger",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -1252,19 +821,19 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 953,
-            "description": "Retrieves a list of HTTP requests received lately by the specified feed (up to 100 entries).",
+            "line": 686,
+            "description": "Retrieves a list of HTTP requests received lately by the specified device (up to 100 entries).",
             "itemtype": "method",
             "name": "getRequestsLog",
             "async": 1,
             "params": [
                 {
                     "name": "id",
-                    "description": "Feed ID",
+                    "description": "Device ID",
                     "type": "String"
                 },
                 {
@@ -1285,19 +854,578 @@
                     "optional": true
                 }
             ],
-            "class": "M2X.feed"
+            "class": "M2X.device"
         },
         {
             "file": "m2x.js",
-            "line": 986,
-            "description": "Retrieves a list of keys associated with the specified account.",
+            "line": 711,
+            "description": "Deletes an existing device",
+            "itemtype": "method",
+            "name": "remove",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Device ID",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.device"
+        },
+        {
+            "file": "m2x.js",
+            "line": 733,
+            "description": "Retrieves list of device distributions accessible by the authenticated API key.",
             "itemtype": "method",
             "name": "search",
             "async": 1,
             "params": [
                 {
-                    "name": "feed",
-                    "description": "It will list all the keys that are associated with that specific feed or its streams",
+                    "name": "options",
+                    "description": "Search options.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 754,
+            "description": "Creates a new device distribution",
+            "itemtype": "method",
+            "name": "create",
+            "async": 1,
+            "params": [
+                {
+                    "name": "distribution",
+                    "description": "Distribution object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
+                    "type": "Object"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 767,
+            "description": "Retrieves information about an existing device distribution.",
+            "itemtype": "method",
+            "name": "getDetails",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 781,
+            "description": "Updates an existing device distribution's information",
+            "itemtype": "method",
+            "name": "update",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "distribution",
+                    "description": "Distribution object. An error will be thrown if name(String) or visibility(either 'public' or 'private') are not provided",
+                    "type": "Object"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 799,
+            "description": "Retrieves list of devices added to the specified distribution.",
+            "itemtype": "method",
+            "name": "getDevices",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "Object",
+                    "description": "options Search parameters.",
+                    "optional": true
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 824,
+            "description": "Adds a new device to an existing distribution.",
+            "itemtype": "method",
+            "name": "addDevice",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "serial",
+                    "description": "Device serial number.",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 850,
+            "description": "Deletes an existing device distribution.",
+            "itemtype": "method",
+            "name": "remove",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 865,
+            "description": "Retrieves a list of data streams associated with the specified distribution.",
+            "itemtype": "method",
+            "name": "getDataStreams",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 879,
+            "description": "Updates a data stream associated with the specified distribution (if a stream with this name does not exist it gets created).",
+            "itemtype": "method",
+            "name": "updateStream",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "Data stream name. No spaces or special characters allowed.",
+                    "type": "String"
+                },
+                {
+                    "name": "stream",
+                    "description": "Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream. See https://m2x.att.com/developer/documentation/v2/distribution#Create-Update-Data-Stream for details.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 910,
+            "description": "Gets details of a specific data stream associated with an existing distribution.",
+            "itemtype": "method",
+            "name": "getDataStreamDetails",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "Data stream name",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 929,
+            "description": "Deletes an existing data stream associated with a specific distribution.",
+            "itemtype": "method",
+            "name": "deleteDataStream",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "Data stream name",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 947,
+            "description": "Retrieves a list of triggers associated with the specified distribution.",
+            "itemtype": "method",
+            "name": "getTriggers",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "options",
+                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/distribution#List-Triggers for details",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 972,
+            "description": "Creates a new trigger associated with the specified distribution.",
+            "itemtype": "method",
+            "name": "createTrigger",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "trigger",
+                    "description": "Trigger object. An error will be thrown if stream(String), condition(String), value(Number), name(String) or callback_url(String) are not provided.",
+                    "type": "Object"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 989,
+            "description": "Gets details of a specific trigger associated with an existing distribution.",
+            "itemtype": "method",
+            "name": "getTriggerDetails",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "trigger_id",
+                    "description": "Trigger ID.",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 1004,
+            "description": "Updates an existing trigger associated with the specified distribution.",
+            "itemtype": "method",
+            "name": "updateTrigger",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "trigger_id",
+                    "description": "Trigger ID.",
+                    "type": "String"
+                },
+                {
+                    "name": "trigger",
+                    "description": "Trigger object. An error will be thrown if stream(String), condition(String), value(Number), name(String) or callback_url(String) are not provided.",
+                    "type": "Object"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 1021,
+            "description": "Tests the specified trigger by firing it with a fake value. See https://m2x.att.com/developer/documentation/v2/distribution#Test-Trigger for details",
+            "itemtype": "method",
+            "name": "testTrigger",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "trigger_id",
+                    "description": "Trigger ID.",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 1040,
+            "description": "Deletes an existing trigger associated with a specific distribution.",
+            "itemtype": "method",
+            "name": "deleteTrigger",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "Distribution ID",
+                    "type": "String"
+                },
+                {
+                    "name": "trigger_id",
+                    "description": "Trigger ID.",
+                    "type": "String"
+                },
+                {
+                    "name": "onSuccess",
+                    "description": "Function to call back if operation is successful",
+                    "type": "Function"
+                },
+                {
+                    "name": "onError",
+                    "description": "Function to call back if operation fails",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "M2X.distribution"
+        },
+        {
+            "file": "m2x.js",
+            "line": 1066,
+            "description": "Retrieves list of keys associated with the specified account.",
+            "itemtype": "method",
+            "name": "search",
+            "async": 1,
+            "params": [
+                {
+                    "name": "deviceID",
+                    "description": "If provided, it will list all the keys that are associated with that specific device or its streams",
                     "type": "String",
                     "optional": true
                 },
@@ -1317,7 +1445,7 @@
         },
         {
             "file": "m2x.js",
-            "line": 1007,
+            "line": 1087,
             "description": "Creates a new key associated with the specified account.",
             "itemtype": "method",
             "name": "create",
@@ -1325,7 +1453,7 @@
             "params": [
                 {
                     "name": "key",
-                    "description": "Key object. An error will be thrown if name(String) or permissions(Array) are not provided. See https://m2x.att.com/developer/documentation/keys#Create-Key for details",
+                    "description": "Key object. An error will be thrown if name(String) or permissions(Array) are not provided. See https://m2x.att.com/developer/documentation/v2/keys#Create-Key for details",
                     "type": "Object"
                 },
                 {
@@ -1344,7 +1472,7 @@
         },
         {
             "file": "m2x.js",
-            "line": 1024,
+            "line": 1104,
             "description": "Gets details of a specific key associated with a developer account.",
             "itemtype": "method",
             "name": "getDetails",
@@ -1371,8 +1499,8 @@
         },
         {
             "file": "m2x.js",
-            "line": 1039,
-            "description": "Update name, stream, permissions, expiration date, origin or feed access of an existing key associated with the specified account",
+            "line": 1119,
+            "description": "Update name, stream, permissions, expiration date, origin or device access of an existing key associated with the specified account",
             "itemtype": "method",
             "name": "update",
             "async": 1,
@@ -1403,7 +1531,7 @@
         },
         {
             "file": "m2x.js",
-            "line": 1059,
+            "line": 1139,
             "description": "Regenerates the specified key.",
             "itemtype": "method",
             "name": "regenerate",
@@ -1430,7 +1558,7 @@
         },
         {
             "file": "m2x.js",
-            "line": 1074,
+            "line": 1154,
             "description": "Deletes an existing key.",
             "itemtype": "method",
             "name": "remove",
@@ -1457,7 +1585,7 @@
         },
         {
             "file": "m2x.js",
-            "line": 1091,
+            "line": 1171,
             "description": "Updates the M2X API key currently used by this instance",
             "itemtype": "method",
             "name": "setKey",
@@ -1472,7 +1600,7 @@
         },
         {
             "file": "m2x.js",
-            "line": 1108,
+            "line": 1188,
             "description": "Creates a Date instance from a ISO8601 date",
             "itemtype": "method",
             "name": "fromISO8601toDate",
@@ -1492,7 +1620,7 @@
         },
         {
             "file": "m2x.js",
-            "line": 1123,
+            "line": 1203,
             "description": "Returns a date in ISO8601 format",
             "itemtype": "method",
             "name": "getISO8601Timestamp",

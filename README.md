@@ -1,22 +1,25 @@
 ##Samsung Gear S (Tizen JavaScript) library for M2X##
-###*(V1 API Only)*###
 
-####Getting Started####
+[AT&T M2X](http://m2x.att.com) is a cloud-based fully managed time-series data storage service for network connected machine-to-machine (M2M) devices and the Internet of Things (IoT). 
 
-1. Signup for an M2X Account: https://m2x.att.com/signup
-2. Obtain your *Master Key* from the Master Keys tab of your Account Settings: https://m2x.att.com/account
-3. Create your first Data Source Blueprint and copy its *Feed ID*: https://m2x.att.com/blueprints
-4. Review the V1 M2X API Documentation: https://m2x.att.com/developer/documentation/overview
+The [AT&T M2X API](https://m2x.att.com/developer/documentation/overview) provides all the needed operations and methods to connect your devices to AT&T's M2X service. This library aims to provide a simple wrapper to interact with the AT&T M2X API. Refer to the [Glossary of Terms](https://m2x.att.com/developer/documentation/glossary) to understand the nomenclature used throughout this documentation.
 
-If you have questions about any M2X specific terms, please consult the M2X glossary: https://m2x.att.com/developer/documentation/glossary
+###Getting Started###
 
-####Overview####
+1. Signup for an [M2X Account](https://m2x.att.com/signup).
+2. Obtain your _Master Key_ from the Master Keys tab of your [Account Settings](https://m2x.att.com/account) screen.
+2. Create your first [Device](https://m2x.att.com/devices) and copy its _Device ID_.
+3. Review the [M2X API Documentation](https://m2x.att.com/developer/documentation/overview).
+
+If you have questions about any M2X specific terms, please consult the [M2X glossary] (https://m2x.att.com/developer/documentation/glossary).
+
+###Overview###
 
 This library will try to participate as a module if an AMD loader is available.
 
 Example:
 
-    define(['lib/m2x.min'],function(M2X) {
+    define(['lib/m2x-2.0.0.min'],function(M2X) {
         var myM2X = new M2X({key:'yourm2xkeygoeshere'});
         ...
     });
@@ -45,83 +48,8 @@ Now all subsequent calls will use the new key. Please note that ```setKey``` wil
 
 ###List of available API###
 
-####Batch API####
-* addDataSource
+####Device API####
 * create
-* getDataSources
-* getDetails
-* remove
-* search
-* update
-
-Example:
-
-    define(['lib/m2x.min'],function(M2X) {
-        ...
-        var myM2X = new M2X({key:'M2X_KEY_GOES_HERE'});
-        myM2X.batch.getDetails("BATCH_ID_GOES_HERE",
-                  function(msg) {
-                       //Batch details are stored in msg.result
-                      ...
-                  },
-                  function(error) {
-                       //Handle error
-                  }
-       );
-        ...
-    });
-
-####Blueprint API####
-* search
-* create
-* getDetails
-* update
-* remove
-
-Example:
-
-    define(['lib/m2x.min'],function(M2X) {
-        ...
-        var myM2X = new M2X({key:'M2X_KEY_GOES_HERE'});
-        myM2X.blueprint.create({name:"blueprint_name",visibility:"private"},
-                  function(msg) {
-                       //Access your new blueprint object via msg.response
-                       ...
-                  },
-                  function(error) {
-                       //Handle error
-                  }
-       );
-        ...
-    });
-
-
-####Data Source API####
-* create
-* getDetails
-* remove
-* search
-* update
-
-Example:
-
-    define(['lib/m2x.min'],function(M2X) {
-        ...
-        var myM2X = new M2X({key:'M2X_KEY_GOES_HERE'});
-        myM2X.datasource.update("DATA_SOURCE_ID",{name:"ds_name",description:"new description",visibility:"private"},
-                  function(msg) {
-                       //On success, M2X will return HTTP code 204 (no content)
-                       //You may confirm by looking at msg.status
-                       ...
-                  },
-                  function(error) {
-                       //Handle error
-                  }
-       );
-        ...
-    });
-
-####Feed API####
 * createTrigger
 * deleteDataStream
 * deleteDataStreamValues
@@ -137,33 +65,33 @@ Example:
 * getTriggers
 * postDataStreamValues
 * postMultipleValues
+* remove
 * search
+* searchDeviceGroups
 * testTrigger
+* update
 * updateDataStreamValue
 * updateLocation
 * updateStream
 * updateTrigger
 
-Example
+Example:
 
-    define(['lib/m2x.min'],function(M2X) {
+    define(['lib/m2x-2.0.0.min'],function(M2X) {
         ...
         var myM2X = new M2X({key:'M2X_KEY_GOES_HERE'}),
             timestamp = M2X.getISO8601Timestamp();
-        myM2X.feed.postMultipleValues("FEED_ID",
+        myM2X.device.postMultipleValues("DEVICE_ID_GOES_HERE",
                 {
-                    "stream1" : [{
-                        "at" : timestamp,
-                        "value" : 123
-                    }],
-                    "stream2" : [{
-                        "at" : timestamp,
-                        "value" : 456
-                    }],
-                    "stream3" : [{
-                        "at" : timestamp,
-                        "value" : 789
-                    }]
+                    "stream1" : [
+                        {"timestamp" : timestamp, "value" : 123}
+                    ],
+                    "stream2" : [
+                        { "timestamp" : timestamp, "value" : 456}
+                    ],
+                    "stream3" : [
+                        { "timestamp" : timestamp, "value" : 789}
+                    ]
                 },
                 function(msg) {
                        //On success, M2X will return HTTP code 202 (accepted)
@@ -177,6 +105,43 @@ Example
         ...
     });
 
+
+####Distribution API####
+* addDevice
+* create
+* createTrigger
+* deleteDataStream
+* deleteTrigger
+* getDataStreamDetails
+* getDataStreams
+* getDetails
+* getDevices
+* getTriggerDetails
+* getTriggers
+* remove
+* search
+* testTrigger
+* update
+* updateStream
+
+Example
+
+    define(['lib/m2x.min'],function(M2X) {
+        ...
+        var myM2X = new M2X({key:'M2X_KEY_GOES_HERE'}),
+            timestamp = M2X.getISO8601Timestamp();
+        myM2X.distribution.getDevices("DISTRIBUTION_ID_GOES_HERE",
+                function(msg) {
+                       //The list of devices is available in msg.response.devices
+                       ...
+                },
+                function(error) {
+                       //Handle error
+                }
+        );
+        ...
+    });
+
 ####Key API#####
 * create
 * getDetails
@@ -187,7 +152,7 @@ Example
 
 Example:
 
-    define(['lib/m2x.min'],function(M2X) {
+    define(['lib/m2x-2.0.0.min'],function(M2X) {
         ...
         var myM2X = new M2X({key:'M2X_KEY_GOES_HERE'});
         myM2X.key.remove("A_M2X_KEY",
@@ -199,7 +164,7 @@ Example:
                   function(error) {
                        //Handle error
                   }
-       );
+        );
         ...
     });
 
