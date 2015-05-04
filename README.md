@@ -67,7 +67,7 @@ Now all subsequent calls will use the new key. Please note that ```setKey``` wil
 * postMultipleValues
 * remove
 * search
-* searchDeviceGroups
+* searchDeviceTags
 * testTrigger
 * update
 * updateDataStreamValue

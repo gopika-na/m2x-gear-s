@@ -107,14 +107,14 @@
         {
             "file": "m2x.js",
             "line": 255,
-            "description": "Retrieve the list of device groups for the authenticated user.",
+            "description": "Retrieve the list of device tags for the authenticated user.",
             "itemtype": "method",
-            "name": "searchDeviceGroups",
+            "name": "searchDeviceTags",
             "async": 1,
             "params": [
                 {
                     "name": "options",
-                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Device-Groups for details.",
+                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Device-Tags for details.",
                     "type": "Object",
                     "optional": true
                 },
