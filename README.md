@@ -21,7 +21,7 @@ If you have questions about any M2X specific terms, please consult the [M2X glos
 
 You'll also need to have a Samsung Gear S on hand and be familiar with the fundamentals of [javascript](https://www.javascript.com).
 
-###Library Documentation###
+###Overview Documentation###
 
 This library will try to participate as a module if an AMD loader is available.
 
@@ -56,7 +56,7 @@ Now all subsequent calls will use the new key. Please note that ```setKey``` wil
 
 ###List of available API###
 
-####Device API####
+####Device APIs####
 * create
 * createTrigger
 * deleteDataStream
@@ -177,10 +177,10 @@ Example:
     });
 
 ###Sample###
-Gear S demo apps are available in the ``demo`` folder
+Samung Gear S demo apps are available in the ``demo`` folder. 
 
-###Documentation###
-A detailed documentation of all the available APIs supported by this library is available in the ``doc`` folder
+###Detailed Documentation###
+Detailed documentation of all the available APIs supported by this library is available in the ``doc`` folder
 
 ###Acknowledgements###
 
