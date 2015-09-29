@@ -20,7 +20,7 @@ Before proceeding, you'll also need to do the following:
 3. Download the [Tizen SDK](http://developer.samsung.com/gear/samsung_gear_develop.html#sdk-download) (including the Tizen IDE)
 4. Review the [Tizen getting started guide](https://developer.tizen.org/development/getting-started/web-application/creating-your-first-tizen-application#wearapp)
 
-You'll also need to have a Samsung Gear S on hand and be familiar with the fundamentals of javascript.
+You'll also need to have a Samsung Gear S on hand and be familiar with the fundamentals of [javascript](https://www.javascript.com).
 
 ###Library Documentation###
 
