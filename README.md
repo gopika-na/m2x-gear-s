@@ -1,6 +1,6 @@
 ##Samsung Gear S (Tizen JavaScript) library for M2X##
 
-[AT&T M2X](http://m2x.att.com) is a cloud-based fully managed time-series data storage service for network connected machine-to-machine (M2M) devices and the Internet of Things (IoT). 
+[AT&T M2X](http://m2x.att.com) is a cloud-based fully managed time-series data storage service for network connected machine-to-machine (M2M) devices and the Internet of Things (IoT). This [Samsung Gear S](http://developer.samsung.com/gear/) client library for M2X is built on top of the [Tizen](https://www.tizen.org/) javascript-based OS.
 
 The [AT&T M2X API](https://m2x.att.com/developer/documentation/overview) provides all the needed operations and methods to connect your devices to AT&T's M2X service. This library aims to provide a simple wrapper to interact with the AT&T M2X API. Refer to the [Glossary of Terms](https://m2x.att.com/developer/documentation/glossary) to understand the nomenclature used throughout this documentation.
 
@@ -13,7 +13,13 @@ The [AT&T M2X API](https://m2x.att.com/developer/documentation/overview) provide
 
 If you have questions about any M2X specific terms, please consult the [M2X glossary] (https://m2x.att.com/developer/documentation/glossary).
 
-###Overview###
+Before proceeding, you'll also need to do the following:
+1. Setup a [Samsung Gear Developer account](http://developer.samsung.com/gear/)
+2. Setup a [Tizen Developer account](https://developer.tizen.org/)
+3. Download the [Tizen SDK](http://developer.samsung.com/gear/samsung_gear_develop.html#sdk-download) (including the Tizen IDE)
+4. Review the [Tizen getting started guide](https://developer.tizen.org/development/getting-started/web-application/creating-your-first-tizen-application#wearapp)
+
+###Library Documentation###
 
 This library will try to participate as a module if an AMD loader is available.
 
