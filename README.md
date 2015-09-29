@@ -14,10 +14,13 @@ The [AT&T M2X API](https://m2x.att.com/developer/documentation/overview) provide
 If you have questions about any M2X specific terms, please consult the [M2X glossary] (https://m2x.att.com/developer/documentation/glossary).
 
 Before proceeding, you'll also need to do the following:
+
 1. Setup a [Samsung Gear Developer account](http://developer.samsung.com/gear/)
 2. Setup a [Tizen Developer account](https://developer.tizen.org/)
 3. Download the [Tizen SDK](http://developer.samsung.com/gear/samsung_gear_develop.html#sdk-download) (including the Tizen IDE)
 4. Review the [Tizen getting started guide](https://developer.tizen.org/development/getting-started/web-application/creating-your-first-tizen-application#wearapp)
+
+You'll also need to have a Samsung Gear S on hand and be familiar with the fundamentals of javascript.
 
 ###Library Documentation###
 
