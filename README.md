@@ -6,19 +6,18 @@ The [AT&T M2X API](https://m2x.att.com/developer/documentation/overview) provide
 
 ###Getting Started###
 
+Before proceeding, you'll need to do the following:
+
 1. Signup for an [M2X Account](https://m2x.att.com/signup).
 2. Obtain your _Master Key_ from the Master Keys tab of your [Account Settings](https://m2x.att.com/account) screen.
 2. Create your first [Device](https://m2x.att.com/devices) and copy its _Device ID_.
 3. Review the [M2X API Documentation](https://m2x.att.com/developer/documentation/overview).
+4. Setup a [Samsung Gear Developer account](http://developer.samsung.com/gear/)
+5. Setup a [Tizen Developer account](https://developer.tizen.org/)
+6. Download the [Tizen SDK](http://developer.samsung.com/gear/samsung_gear_develop.html#sdk-download) (including the Tizen IDE)
+7. Review the [Tizen getting started guide](https://developer.tizen.org/development/getting-started/web-application/creating-your-first-tizen-application#wearapp)
 
 If you have questions about any M2X specific terms, please consult the [M2X glossary] (https://m2x.att.com/developer/documentation/glossary).
-
-Before proceeding, you'll also need to do the following:
-
-1. Setup a [Samsung Gear Developer account](http://developer.samsung.com/gear/)
-2. Setup a [Tizen Developer account](https://developer.tizen.org/)
-3. Download the [Tizen SDK](http://developer.samsung.com/gear/samsung_gear_develop.html#sdk-download) (including the Tizen IDE)
-4. Review the [Tizen getting started guide](https://developer.tizen.org/development/getting-started/web-application/creating-your-first-tizen-application#wearapp)
 
 You'll also need to have a Samsung Gear S on hand and be familiar with the fundamentals of [javascript](https://www.javascript.com).
 
