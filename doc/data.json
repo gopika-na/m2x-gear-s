@@ -1,8 +1,8 @@
 {
     "project": {},
     "files": {
-        "m2x.js": {
-            "name": "m2x.js",
+        "m2x-2.0.0.js": {
+            "name": "m2x-2.0.0.js",
             "modules": {},
             "classes": {
                 "M2X": 1,
@@ -26,7 +26,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 57,
             "description": "Tizen JavaScript library for AT&T M2X platform. This library will try to participate as a module if an AMD loader is available",
             "is_constructor": 1,
@@ -46,7 +46,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 229,
             "description": "M2X Device API facade"
         },
@@ -58,7 +58,7 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 727,
             "description": "M2X Distribution API facade"
         },
@@ -70,23 +70,24 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1060,
             "description": "M2X Key API facade"
         }
     },
+    "elements": {},
     "classitems": [
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 235,
-            "description": "Retrieve the list of devices accessible by the authenticated API key that meet the search criteria.",
+            "description": "Retrieve the list of devices accessible by the authenticated API key that meet the search criteria. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Search-Devices\">Search Devices</a> for details.",
             "itemtype": "method",
             "name": "search",
             "async": 1,
             "params": [
                 {
                     "name": "options",
-                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Search-Devices for details.",
+                    "description": "Search options.",
                     "type": "Object",
                     "optional": true
                 },
@@ -105,16 +106,16 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 255,
-            "description": "Retrieve the list of device tags for the authenticated user.",
+            "description": "Retrieve the list of device tags for the authenticated user. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#List-Device-Tags\">List Device Tags</a> for details.",
             "itemtype": "method",
             "name": "searchDeviceTags",
             "async": 1,
             "params": [
                 {
                     "name": "options",
-                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Device-Tags for details.",
+                    "description": "Search options.",
                     "type": "Object",
                     "optional": true
                 },
@@ -133,9 +134,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 275,
-            "description": "Creates a new device",
+            "description": "Creates a new device. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Create-Device\">Create Device</a> for details.",
             "itemtype": "method",
             "name": "create",
             "async": 1,
@@ -160,9 +161,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 288,
-            "description": "Updates an existing Device's information.",
+            "description": "Updates an existing Device's information. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Update-Device-Details\">Update Device Details</a> for details.",
             "itemtype": "method",
             "name": "update",
             "async": 1,
@@ -192,9 +193,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 306,
-            "description": "Gets details of an existing Device",
+            "description": "Gets details of an existing Device. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#View-Device-Details\">View Device Details</a> for details.",
             "itemtype": "method",
             "name": "getDetails",
             "async": 1,
@@ -219,9 +220,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 320,
-            "description": "Gets location details of an existing Device",
+            "description": "Gets location details of an existing Device. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Read-Device-Location\">Read Device Location</a> for details.",
             "itemtype": "method",
             "name": "getLocation",
             "async": 1,
@@ -246,9 +247,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 335,
-            "description": "Updates the current location of the specified device",
+            "description": "Updates the current location of the specified device. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Update-Device-Location\">Update Device Location</a> for details.",
             "itemtype": "method",
             "name": "updateLocation",
             "async": 1,
@@ -260,7 +261,7 @@
                 },
                 {
                     "name": "location",
-                    "description": "Location object. An error will be thrown if latitude(number) or longitude(number) are not provided. See https://m2x.att.com/developer/documentation/v2/device#Update-Device-Location for details",
+                    "description": "Location object. An error will be thrown if latitude(number) or longitude(number) are not provided.",
                     "type": "Object"
                 },
                 {
@@ -278,9 +279,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 352,
-            "description": "Retrieves a list of data streams associated with the specified device",
+            "description": "Retrieves a list of data streams associated with the specified device. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#List-Data-Streams\">List Data Streams</a> for details.",
             "itemtype": "method",
             "name": "getDataStreams",
             "async": 1,
@@ -305,9 +306,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 366,
-            "description": "Updates a data stream associated with the specified device (if a stream with this name does not exist it gets created).",
+            "description": "Updates a data stream associated with the specified device (if a stream with this name does not exist it gets created). See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Create-Update-Data-Stream\">Create/Update Data Stream</a> for details.",
             "itemtype": "method",
             "name": "updateStream",
             "async": 1,
@@ -324,7 +325,7 @@
                 },
                 {
                     "name": "stream",
-                    "description": "Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream. See https://m2x.att.com/developer/documentation/v2/device#Create-Update-Data-Stream for details.",
+                    "description": "Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream.",
                     "type": "Object",
                     "optional": true
                 },
@@ -343,9 +344,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 397,
-            "description": "Updates the current stream value of the specified stream",
+            "description": "Updates the current stream value of the specified stream. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Update-Data-Stream-Value\">Update Data Stream Value</a> for details.",
             "itemtype": "method",
             "name": "updateDataStreamValue",
             "async": 1,
@@ -380,9 +381,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 418,
-            "description": "Gets details of a specific data stream associated with an existing device.",
+            "description": "Gets details of a specific data stream associated with an existing device. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#View-Data-Stream\">View Data Stream</a> for details.",
             "itemtype": "method",
             "name": "getDataStreamDetails",
             "async": 1,
@@ -412,9 +413,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 437,
-            "description": "List values from an existing data stream associated with a specific device, sorted in reverse chronological order (most recent values first).",
+            "description": "List values from an existing data stream associated with a specific device, sorted in reverse chronological order (most recent values first). See <a href=\"https://m2x.att.com/developer/documentation/v2/device#List-Data-Stream-Values\">List Data Stream Values</a> for details.",
             "itemtype": "method",
             "name": "getDataStreamValues",
             "async": 1,
@@ -431,7 +432,7 @@
                 },
                 {
                     "name": "options",
-                    "description": "Filter options. See https://m2x.att.com/developer/documentation/v2/device#List-Data-Stream-Values for details",
+                    "description": "Filter options.",
                     "type": "Object",
                     "optional": true
                 },
@@ -450,9 +451,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 466,
-            "description": "Return count, min, max, average and standard deviation stats for the values on an existing data stream. <br>Note: This endpoint <b>only</b> works for numeric streams.",
+            "description": "Return count, min, max, average and standard deviation stats for the values on an existing data stream. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Data-Stream-Stats\">Data Stream Stats</a> for details. <br>Note: This endpoint <b>only</b> works for numeric streams.",
             "itemtype": "method",
             "name": "getDataStreamStats",
             "async": 1,
@@ -488,9 +489,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 495,
-            "description": "Posts timestamped values to an existing data stream associated with a specific device.",
+            "description": "Posts timestamped values to an existing data stream associated with a specific device. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Post-Data-Stream-Values\">Post Data Stream Values</a> for details.",
             "itemtype": "method",
             "name": "postDataStreamValues",
             "async": 1,
@@ -525,9 +526,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 521,
-            "description": "Deletes values in a stream by a date range.",
+            "description": "Deletes values in a stream by a date range. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Delete-Data-Stream-Values\">Delete Data Stream Values</a> for details.",
             "itemtype": "method",
             "name": "deleteDataStreamValues",
             "async": 1,
@@ -562,9 +563,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 541,
-            "description": "Deletes an existing data stream associated with a specific device.",
+            "description": "Deletes an existing data stream associated with a specific device. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Delete-Data-Stream\">Delete Data Stream</a> for details.",
             "itemtype": "method",
             "name": "deleteDataStream",
             "async": 1,
@@ -594,9 +595,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 559,
-            "description": "Posts values to multiple streams at once.",
+            "description": "Posts values to multiple streams at once. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Post-Device-Updates--Multiple-Values-to-Multiple-Streams-\">Post Device Updates(Multiple Values to Multiple Streams)</a> for details.",
             "itemtype": "method",
             "name": "postMultipleValues",
             "async": 1,
@@ -608,7 +609,7 @@
                 },
                 {
                     "name": "values",
-                    "description": "An object with one attribute per each stream to be updated. The value of each one of these attributes is an array of timestamped values. See https://m2x.att.com/developer/documentation/v2/device#Post-Device-Updates--Multiple-Values-to-Multiple-Streams- for details",
+                    "description": "An object with one attribute per each stream to be updated. The value of each one of these attributes is an array of timestamped values.",
                     "type": "Object"
                 },
                 {
@@ -626,9 +627,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 575,
-            "description": "Retrieves a list of triggers associated with the specified device.",
+            "description": "Retrieves a list of triggers associated with the specified device. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#List-Triggers\">List Triggers</a> for details.",
             "itemtype": "method",
             "name": "getTriggers",
             "async": 1,
@@ -640,7 +641,7 @@
                 },
                 {
                     "name": "options",
-                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Triggers for details",
+                    "description": "Search options.",
                     "type": "Object",
                     "optional": true
                 },
@@ -659,9 +660,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 600,
-            "description": "Creates a new trigger associated with the specified device.",
+            "description": "Creates a new trigger associated with the specified device. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#Create-Trigger\">Create Trigger</a> for details.",
             "itemtype": "method",
             "name": "createTrigger",
             "async": 1,
@@ -691,9 +692,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 617,
-            "description": "Gets details of a specific trigger associated with an existing device.",
+            "description": "Gets details of a specific trigger associated with an existing device. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#View-Trigger\">View Trigger</a> for details.",
             "itemtype": "method",
             "name": "getTriggerDetails",
             "async": 1,
@@ -723,9 +724,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 632,
-            "description": "Updates an existing trigger associated with the specified device.",
+            "description": "Updates an existing trigger associated with the specified device. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#Update-Trigger\">Update Trigger</a> for details.",
             "itemtype": "method",
             "name": "updateTrigger",
             "async": 1,
@@ -760,9 +761,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 649,
-            "description": "Tests the specified trigger by firing it with a fake value. See https://m2x.att.com/developer/documentation/v2/device#Test-Trigger for details",
+            "description": "Tests the specified trigger by firing it with a fake value. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#Test-Trigger\">Test Trigger</a> for details.",
             "itemtype": "method",
             "name": "testTrigger",
             "async": 1,
@@ -792,9 +793,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 668,
-            "description": "Deletes an existing trigger associated with a specific device.",
+            "description": "Deletes an existing trigger associated with a specific device. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#Delete-Trigger\">Delete Trigger</a> for details.",
             "itemtype": "method",
             "name": "deleteTrigger",
             "async": 1,
@@ -824,9 +825,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 686,
-            "description": "Retrieves a list of HTTP requests received lately by the specified device (up to 100 entries).",
+            "description": "Retrieves a list of HTTP requests received lately by the specified device (up to 100 entries). See <a href=\"https://m2x.att.com/developer/documentation/v2/device#View-Request-Log\">View Request Log</a> for details.",
             "itemtype": "method",
             "name": "getRequestsLog",
             "async": 1,
@@ -857,9 +858,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 711,
-            "description": "Deletes an existing device",
+            "description": "Deletes an existing device. See <a href=\"https://m2x.att.com/developer/documentation/v2/device#Delete-Device\">Delete Device</a> for details.",
             "itemtype": "method",
             "name": "remove",
             "async": 1,
@@ -884,9 +885,9 @@
             "class": "M2X.device"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 733,
-            "description": "Retrieves list of device distributions accessible by the authenticated API key.",
+            "description": "Retrieves list of device distributions accessible by the authenticated API key. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#List-Distributions\">List Distributions</a> for details.",
             "itemtype": "method",
             "name": "search",
             "async": 1,
@@ -912,9 +913,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 754,
-            "description": "Creates a new device distribution",
+            "description": "Creates a new device distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#Create-Distribution\">Create Distribution</a> for details.",
             "itemtype": "method",
             "name": "create",
             "async": 1,
@@ -939,9 +940,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 767,
-            "description": "Retrieves information about an existing device distribution.",
+            "description": "Retrieves information about an existing device distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#View-Distribution-Details\">View Distribution Details</a> for details.",
             "itemtype": "method",
             "name": "getDetails",
             "async": 1,
@@ -966,9 +967,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 781,
-            "description": "Updates an existing device distribution's information",
+            "description": "Updates an existing device distribution's information. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#Update-Distribution-Details\">Update Distribution Details</a> for details.",
             "itemtype": "method",
             "name": "update",
             "async": 1,
@@ -998,9 +999,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 799,
-            "description": "Retrieves list of devices added to the specified distribution.",
+            "description": "Retrieves list of devices added to the specified distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#List-Devices-from-an-existing-Distribution\">List Devices from an existing Distribution</a> for details.",
             "itemtype": "method",
             "name": "getDevices",
             "async": 1,
@@ -1030,9 +1031,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 824,
-            "description": "Adds a new device to an existing distribution.",
+            "description": "Adds a new device to an existing distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#Add-Device-to-an-existing-Distribution\">Add Device to an existing Distribution</a> for details.",
             "itemtype": "method",
             "name": "addDevice",
             "async": 1,
@@ -1062,9 +1063,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 850,
-            "description": "Deletes an existing device distribution.",
+            "description": "Deletes an existing device distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#Delete-Distribution\">Delete Distribution</a> for details.",
             "itemtype": "method",
             "name": "remove",
             "async": 1,
@@ -1089,9 +1090,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 865,
-            "description": "Retrieves a list of data streams associated with the specified distribution.",
+            "description": "Retrieves a list of data streams associated with the specified distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#List-Data-Streams\">List Data Streams</a> for details.",
             "itemtype": "method",
             "name": "getDataStreams",
             "async": 1,
@@ -1116,9 +1117,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 879,
-            "description": "Updates a data stream associated with the specified distribution (if a stream with this name does not exist it gets created).",
+            "description": "Updates a data stream associated with the specified distribution (if a stream with this name does not exist it gets created). See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#Create-Update-Data-Stream\">Create/Update Data Stream</a> for details.",
             "itemtype": "method",
             "name": "updateStream",
             "async": 1,
@@ -1135,7 +1136,7 @@
                 },
                 {
                     "name": "stream",
-                    "description": "Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream. See https://m2x.att.com/developer/documentation/v2/distribution#Create-Update-Data-Stream for details.",
+                    "description": "Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream.",
                     "type": "Object",
                     "optional": true
                 },
@@ -1154,9 +1155,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 910,
-            "description": "Gets details of a specific data stream associated with an existing distribution.",
+            "description": "Gets details of a specific data stream associated with an existing distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#View-Data-Stream\">View Data Stream</a> for details.",
             "itemtype": "method",
             "name": "getDataStreamDetails",
             "async": 1,
@@ -1186,9 +1187,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 929,
-            "description": "Deletes an existing data stream associated with a specific distribution.",
+            "description": "Deletes an existing data stream associated with a specific distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/distribution#Delete-Data-Stream\">Delete Data Stream</a> for details.",
             "itemtype": "method",
             "name": "deleteDataStream",
             "async": 1,
@@ -1218,9 +1219,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 947,
-            "description": "Retrieves a list of triggers associated with the specified distribution.",
+            "description": "Retrieves a list of triggers associated with the specified distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#List-Triggers\">List Triggers</a> for details.",
             "itemtype": "method",
             "name": "getTriggers",
             "async": 1,
@@ -1232,7 +1233,7 @@
                 },
                 {
                     "name": "options",
-                    "description": "Search options. See https://m2x.att.com/developer/documentation/v2/distribution#List-Triggers for details",
+                    "description": "Search options.",
                     "type": "Object",
                     "optional": true
                 },
@@ -1251,9 +1252,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 972,
-            "description": "Creates a new trigger associated with the specified distribution.",
+            "description": "Creates a new trigger associated with the specified distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#Create-Trigger\">Create Trigger</a> for details.",
             "itemtype": "method",
             "name": "createTrigger",
             "async": 1,
@@ -1283,9 +1284,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 989,
-            "description": "Gets details of a specific trigger associated with an existing distribution.",
+            "description": "Gets details of a specific trigger associated with an existing distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#View-Trigger\">View Trigger</a> for details.",
             "itemtype": "method",
             "name": "getTriggerDetails",
             "async": 1,
@@ -1315,9 +1316,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1004,
-            "description": "Updates an existing trigger associated with the specified distribution.",
+            "description": "Updates an existing trigger associated with the specified distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#Update-Trigger\">Update Trigger</a> for details.",
             "itemtype": "method",
             "name": "updateTrigger",
             "async": 1,
@@ -1352,9 +1353,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1021,
-            "description": "Tests the specified trigger by firing it with a fake value. See https://m2x.att.com/developer/documentation/v2/distribution#Test-Trigger for details",
+            "description": "Tests the specified trigger by firing it with a fake value. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#Test-Trigger\">Test Trigger</a> for details",
             "itemtype": "method",
             "name": "testTrigger",
             "async": 1,
@@ -1384,9 +1385,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1040,
-            "description": "Deletes an existing trigger associated with a specific distribution.",
+            "description": "Deletes an existing trigger associated with a specific distribution. See <a href=\"https://m2x.att.com/developer/documentation/v2/triggers#Delete-Trigger\">Delete Trigger</a> for details.",
             "itemtype": "method",
             "name": "deleteTrigger",
             "async": 1,
@@ -1416,9 +1417,9 @@
             "class": "M2X.distribution"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1066,
-            "description": "Retrieves list of keys associated with the specified account.",
+            "description": "Retrieves list of keys associated with the specified account. See <a href=\"https://m2x.att.com/developer/documentation/v2/keys#List-Keys\">List Keys</a> for details.",
             "itemtype": "method",
             "name": "search",
             "async": 1,
@@ -1444,16 +1445,16 @@
             "class": "M2X.key"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1087,
-            "description": "Creates a new key associated with the specified account.",
+            "description": "Creates a new key associated with the specified account. See <a href=\"https://m2x.att.com/developer/documentation/v2/keys#Create-Key\">Create Key</a> for details.",
             "itemtype": "method",
             "name": "create",
             "async": 1,
             "params": [
                 {
                     "name": "key",
-                    "description": "Key object. An error will be thrown if name(String) or permissions(Array) are not provided. See https://m2x.att.com/developer/documentation/v2/keys#Create-Key for details",
+                    "description": "Key object. An error will be thrown if name(String) or permissions(Array) are not provided.",
                     "type": "Object"
                 },
                 {
@@ -1471,9 +1472,9 @@
             "class": "M2X.key"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1104,
-            "description": "Gets details of a specific key associated with a developer account.",
+            "description": "Gets details of a specific key associated with a developer account. See <a href=\"https://m2x.att.com/developer/documentation/v2/keys#View-Key-Details\">View Key Details</a> for details.",
             "itemtype": "method",
             "name": "getDetails",
             "async": 1,
@@ -1498,9 +1499,9 @@
             "class": "M2X.key"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1119,
-            "description": "Update name, stream, permissions, expiration date, origin or device access of an existing key associated with the specified account",
+            "description": "Update name, stream, permissions, expiration date, origin or device access of an existing key associated with the specified account. See <a href=\"https://m2x.att.com/developer/documentation/v2/keys#Update-Key\">Update Key</a> for details.",
             "itemtype": "method",
             "name": "update",
             "async": 1,
@@ -1521,18 +1522,17 @@
                     "type": "Function"
                 },
                 {
-                    "name": "onError",
-                    "description": "Function to call back if operation fails\n \nNote: Do not include `key` in the Key object. Otherwise, M2X will return\n\t\ta 422(Unprocessable Entity) error with message \"Validation Failed\",\"errors\":{\"key\":[\"unknown\"]}",
-                    "type": "Function",
-                    "optional": true
+                    "name": "[onError] Function to call back if operation fails\n \nNote: Do not include `key` in the Key object. Otherwise, M2X will return\n\t\ta 422(Unprocessable Entity) error with message \"Validation Failed\",\"errors\":{\"key\":[\"unknown\"]",
+                    "description": "}",
+                    "type": "Function"
                 }
             ],
             "class": "M2X.key"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1139,
-            "description": "Regenerates the specified key.",
+            "description": "Regenerates the specified key. See <a href=\"https://m2x.att.com/developer/documentation/v2/keys#Regenerate-Key\">Regenerate Key</a> for details.",
             "itemtype": "method",
             "name": "regenerate",
             "async": 1,
@@ -1557,9 +1557,9 @@
             "class": "M2X.key"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1154,
-            "description": "Deletes an existing key.",
+            "description": "Deletes an existing key. See <a href=\"https://m2x.att.com/developer/documentation/v2/keys#Delete-Key\">Delete Key</a> for details.",
             "itemtype": "method",
             "name": "remove",
             "async": 1,
@@ -1584,9 +1584,9 @@
             "class": "M2X.key"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1171,
-            "description": "Updates the M2X API key currently used by this instance",
+            "description": "Updates the M2X API key currently used by this instance.",
             "itemtype": "method",
             "name": "setKey",
             "params": [
@@ -1599,9 +1599,9 @@
             "class": "M2X"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1188,
-            "description": "Creates a Date instance from a ISO8601 date",
+            "description": "Creates a Date instance from a ISO8601 date. See <a href=\"https://m2x.att.com/developer/documentation/v2/time\">time</a> for details.",
             "itemtype": "method",
             "name": "fromISO8601toDate",
             "static": 1,
@@ -1619,9 +1619,9 @@
             "class": "M2X"
         },
         {
-            "file": "m2x.js",
+            "file": "m2x-2.0.0.js",
             "line": 1203,
-            "description": "Returns a date in ISO8601 format",
+            "description": "Returns a date in ISO8601 format. See <a href=\"https://m2x.att.com/developer/documentation/v2/time\">time</a> for details.",
             "itemtype": "method",
             "name": "getISO8601Timestamp",
             "static": 1,

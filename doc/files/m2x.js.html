@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>m2x.js</title>
+    <title>m2x-2.0.0.js</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <link rel="icon" href="../assets/favicon.ico">
     <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
 
 <div id="doc">
     <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
+        </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: Tizen JavaScript library for AT&T M2X platform</em>
+            <em>API Docs for: </em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -22,68 +25,61 @@
         <div class="yui3-u-1-4">
             <div id="docs-sidebar" class="sidebar apidocs">
                 <div id="api-list">
-    <h2 class="off-left">APIs</h2>
-    <div id="api-tabview" class="tabview">
-        <ul class="tabs">
-            <li><a href="#api-classes">Classes</a></li>
-            <li><a href="#api-modules">Modules</a></li>
-        </ul>
-
-        <div id="api-tabview-filter">
-            <input type="search" id="api-filter" placeholder="Type to filter APIs">
-        </div>
-
-        <div id="api-tabview-panel">
-            <ul id="api-classes" class="apis classes">
-            
-                <li><a href="../classes/M2X.html">M2X</a></li>
-            
-                <li><a href="../classes/M2X.device.html">M2X.device</a></li>
-            
-                <li><a href="../classes/M2X.distribution.html">M2X.distribution</a></li>
-            
-                <li><a href="../classes/M2X.key.html">M2X.key</a></li>
-            
-            </ul>
-
-            <ul id="api-modules" class="apis modules">
-            
-            </ul>
-        </div>
-    </div>
-</div>
-
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/M2X.html">M2X</a></li>
+                                <li><a href="../classes/M2X.device.html">M2X.device</a></li>
+                                <li><a href="../classes/M2X.distribution.html">M2X.distribution</a></li>
+                                <li><a href="../classes/M2X.key.html">M2X.key</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="yui3-u-3-4">
                 <div id="api-options">
-        Show:
-        <label for="api-show-inherited">
-            <input type="checkbox" id="api-show-inherited" checked>
-            Inherited
-        </label>
-
-        <label for="api-show-protected">
-            <input type="checkbox" id="api-show-protected">
-            Protected
-        </label>
-
-        <label for="api-show-private">
-            <input type="checkbox" id="api-show-private">
-            Private
-        </label>
-        <label for="api-show-deprecated">
-            <input type="checkbox" id="api-show-deprecated">
-            Deprecated
-        </label>
-
-    </div>
-
-
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: m2x.js</h1>
+<h1 class="file-heading">File: m2x-2.0.0.js</h1>
 
 <div class="file">
     <pre class="code prettyprint linenums">
@@ -322,47 +318,47 @@
          */
         api.device = {
             /**
-             * Retrieve the list of devices accessible by the authenticated API key that meet the search criteria.
+             * Retrieve the list of devices accessible by the authenticated API key that meet the search criteria. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Search-Devices&quot;&gt;Search Devices&lt;/a&gt; for details.
              * @method search
              * @async
-             * @param {Object} [options] Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Search-Devices for details.
+             * @param {Object} [options] Search options.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
             search : function (options,cbS,cbE) {
-                var onSuccess = cbS,
+                var urlparams = options,
+                    onSuccess = cbS,
                     onError = cbE;
                 
-                if (Utils.isFunc(options)) {
+                if (Utils.isFunc(urlparams)) {
+                    urlparams = {};
                     onSuccess = options;
-                    if (Utils.isFunc(cbS)) {
-                        onError = cbS;
-                    }
+                    onError = cbS;
                 }
-                request({verb:&quot;GET&quot;, path: &quot;/devices&quot;, urlparams : options, onSuccess : onSuccess, onError: onError});
+                request({verb:&quot;GET&quot;, path: &quot;/devices&quot;, urlparams : urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
-             * Retrieve the list of device tags for the authenticated user.
+             * Retrieve the list of device tags for the authenticated user. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#List-Device-Tags&quot;&gt;List Device Tags&lt;/a&gt; for details.
              * @method searchDeviceTags
              * @async
-             * @param {Object} [options] Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Device-Tags for details.
+             * @param {Object} [options] Search options.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
             searchDeviceTags : function (options,cbS,cbE) {
-                var onSuccess = cbS,
+                var urlparams = options,
+                    onSuccess = cbS,
                     onError = cbE;
                 
-                if (Utils.isFunc(options)) {
+                if (Utils.isFunc(urlparams)) {
+                    urlparams = {};
                     onSuccess = options;
-                    if (Utils.isFunc(cbS)) {
-                        onError = cbS;
-                    }
+                    onError = cbS;
                 }
-                request({verb:&quot;GET&quot;, path: &quot;/devices/tags&quot;, urlparams : options, onSuccess : onSuccess, onError: onError});
+                request({verb:&quot;GET&quot;, path: &quot;/devices/tags&quot;, urlparams : urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
-             * Creates a new device
+             * Creates a new device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Create-Device&quot;&gt;Create Device&lt;/a&gt; for details.
              * @method create
              * @async
              * @param {Object} device Device object. An error will be thrown if name(String) or visibility(either &#x27;public&#x27; or &#x27;private&#x27;) are not provided
@@ -375,7 +371,7 @@
                 request({verb:&quot;POST&quot;, path: &quot;/devices&quot;, body: device, onSuccess: cbS, onError: cbE}); 
             },
             /**
-             * Updates an existing Device&#x27;s information. 
+             * Updates an existing Device&#x27;s information. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Update-Device-Details&quot;&gt;Update Device Details&lt;/a&gt; for details.
              * @method update
              * @async
              * @param {String} id Device ID
@@ -393,7 +389,7 @@
                 request({verb:&quot;PUT&quot;, path: Utils.formatURL(&quot;/devices/{1}&quot;,id), body: device, onSuccess: cbS, onError: cbE}); 
             },
             /**
-             * Gets details of an existing Device
+             * Gets details of an existing Device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#View-Device-Details&quot;&gt;View Device Details&lt;/a&gt; for details.
              * @method getDetails
              * @async
              * @param {String} id Device ID
@@ -407,7 +403,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/devices/{1}&quot;,id), onSuccess : cbS, onError: cbE});
             },
             /**
-             * Gets location details of an existing Device
+             * Gets location details of an existing Device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Read-Device-Location&quot;&gt;Read Device Location&lt;/a&gt; for details.
              * @method getLocation
              * @async
              * @param {String} id Device ID
@@ -422,11 +418,11 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/devices/{1}/location&quot;,id), onSuccess : cbS, onError: cbE});
             },
             /**
-             * Updates the current location of the specified device
+             * Updates the current location of the specified device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Update-Device-Location&quot;&gt;Update Device Location&lt;/a&gt; for details.
              * @method updateLocation
              * @async
              * @param {String} id Device ID
-             * @param {Object} location Location object. An error will be thrown if latitude(number) or longitude(number) are not provided. See https://m2x.att.com/developer/documentation/v2/device#Update-Device-Location for details
+             * @param {Object} location Location object. An error will be thrown if latitude(number) or longitude(number) are not provided.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
@@ -439,7 +435,7 @@
                 request({verb:&quot;PUT&quot;, path: Utils.formatURL(&quot;/devices/{1}/location&quot;,id), body : location, onSuccess : cbS, onError: cbE});
             },
             /**
-             * Retrieves a list of data streams associated with the specified device
+             * Retrieves a list of data streams associated with the specified device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#List-Data-Streams&quot;&gt;List Data Streams&lt;/a&gt; for details.
              * @method getDataStreams
              * @async
              * @param {String} id Device ID
@@ -453,12 +449,12 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/devices/{1}/streams&quot;,id), onSuccess : cbS, onError: cbE});	        	
             },
             /**
-             * Updates a data stream associated with the specified device (if a stream with this name does not exist it gets created).
+             * Updates a data stream associated with the specified device (if a stream with this name does not exist it gets created). See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Create-Update-Data-Stream&quot;&gt;Create/Update Data Stream&lt;/a&gt; for details.
              * @method updateStream
              * @async
              * @param {String} id Device ID
              * @param {String} name Data stream name. No spaces or special characters allowed.
-             * @param {Object} [stream] Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream. See https://m2x.att.com/developer/documentation/v2/device#Create-Update-Data-Stream for details.
+             * @param {Object} [stream] Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
@@ -484,7 +480,7 @@
                 request({verb:&quot;PUT&quot;, path: Utils.formatURL(&quot;/devices/{1}/streams/{2}&quot;,id,name), body : body, onSuccess : onSuccess, onError: onError});
             },
             /**
-             * Updates the current stream value of the specified stream
+             * Updates the current stream value of the specified stream. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Update-Data-Stream-Value&quot;&gt;Update Data Stream Value&lt;/a&gt; for details.
              * @method updateDataStreamValue
              * @async
              * @param {String} id Device ID
@@ -505,7 +501,7 @@
                 request({verb:&quot;PUT&quot;, path: Utils.formatURL(&quot;/devices/{1}/streams/{2}/value&quot;,id,name), body : streamValue, onSuccess : cbS, onError: cbE});
             },
             /**
-             * Gets details of a specific data stream associated with an existing device.
+             * Gets details of a specific data stream associated with an existing device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#View-Data-Stream&quot;&gt;View Data Stream&lt;/a&gt; for details.
              * @method getDataStreamDetails
              * @async
              * @param {String} id Device ID
@@ -524,12 +520,12 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/devices/{1}/streams/{2}&quot;,id,name), onSuccess : cbS, onError: cbE});
             },
             /**
-             * List values from an existing data stream associated with a specific device, sorted in reverse chronological order (most recent values first).
+             * List values from an existing data stream associated with a specific device, sorted in reverse chronological order (most recent values first). See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#List-Data-Stream-Values&quot;&gt;List Data Stream Values&lt;/a&gt; for details.
              * @method getDataStreamValues
              * @async
              * @param {String} id Device ID
              * @param {String} name Data stream name
-             * @param {Object} [options] Filter options. See https://m2x.att.com/developer/documentation/v2/device#List-Data-Stream-Values for details
+             * @param {Object} [options] Filter options.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
@@ -553,7 +549,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/devices/{1}/streams/{2}/values.json&quot;,id,name), urlparams: urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
-             * Return count, min, max, average and standard deviation stats for the values on an existing data stream. &lt;br&gt;Note: This endpoint &lt;b&gt;only&lt;/b&gt; works for numeric streams.
+             * Return count, min, max, average and standard deviation stats for the values on an existing data stream. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Data-Stream-Stats&quot;&gt;Data Stream Stats&lt;/a&gt; for details. &lt;br&gt;Note: This endpoint &lt;b&gt;only&lt;/b&gt; works for numeric streams.
              * @method getDataStreamStats
              * @async
              * @param {String} id Device ID
@@ -582,7 +578,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/devices/{1}/streams/{2}/stats&quot;,id,name), urlparams: urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
-             * Posts timestamped values to an existing data stream associated with a specific device.
+             * Posts timestamped values to an existing data stream associated with a specific device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Post-Data-Stream-Values&quot;&gt;Post Data Stream Values&lt;/a&gt; for details.
              * @method postDataStreamValues
              * @async
              * @param {String} id Device ID
@@ -608,7 +604,7 @@
                 request({verb:&quot;POST&quot;, path: Utils.formatURL(&quot;/devices/{1}/streams/{2}/values&quot;,id,name), body : {values: values}, onSuccess : cbS, onError: cbE});
             },
             /**
-             * Deletes values in a stream by a date range.
+             * Deletes values in a stream by a date range. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Delete-Data-Stream-Values&quot;&gt;Delete Data Stream Values&lt;/a&gt; for details.
              * @method deleteDataStreamValues
              * @async
              * @param {String} id Device ID
@@ -628,7 +624,7 @@
                 request({verb:&quot;DELETE&quot;, path: Utils.formatURL(&quot;/devices/{1}/streams/{2}/values&quot;,id,name), body : parameters, onSuccess : cbS, onError: cbE});
             },
             /**
-             * Deletes an existing data stream associated with a specific device.
+             * Deletes an existing data stream associated with a specific device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Delete-Data-Stream&quot;&gt;Delete Data Stream&lt;/a&gt; for details.
              * @method deleteDataStream
              * @async
              * @param {String} id Device ID
@@ -646,12 +642,12 @@
                 request({verb:&quot;DELETE&quot;, path: Utils.formatURL(&quot;/devices/{1}/streams/{2}&quot;,id,name), onSuccess : cbS, onError: cbE});
             },
             /**
-             * Posts values to multiple streams at once.
+             * Posts values to multiple streams at once. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Post-Device-Updates--Multiple-Values-to-Multiple-Streams-&quot;&gt;Post Device Updates(Multiple Values to Multiple Streams)&lt;/a&gt; for details.
              * @method postMultipleValues 
              * @async
              * @method postMultipleValues
              * @param {String} id Device ID 
-             * @param {Object} values  An object with one attribute per each stream to be updated. The value of each one of these attributes is an array of timestamped values. See https://m2x.att.com/developer/documentation/v2/device#Post-Device-Updates--Multiple-Values-to-Multiple-Streams- for details
+             * @param {Object} values  An object with one attribute per each stream to be updated. The value of each one of these attributes is an array of timestamped values.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
@@ -662,11 +658,11 @@
                 request({verb:&quot;POST&quot;, path: Utils.formatURL(&quot;/devices/{1}/updates&quot;,id), body : {values: values}, onSuccess : cbS, onError: cbE});
             },
             /**
-             * Retrieves a list of triggers associated with the specified device.
+             * Retrieves a list of triggers associated with the specified device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#List-Triggers&quot;&gt;List Triggers&lt;/a&gt; for details.
              * @method getTriggers
              * @async
              * @param {String} id Device ID 
-             * @param {Object} [options]  Search options. See https://m2x.att.com/developer/documentation/v2/device#List-Triggers for details
+             * @param {Object} [options]  Search options.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
@@ -687,7 +683,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/devices/{1}/triggers&quot;,id), urlparams: urlparams, onSuccess : onSuccess, onError: onError});	        	
             },
             /**
-             * Creates a new trigger associated with the specified device.
+             * Creates a new trigger associated with the specified device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#Create-Trigger&quot;&gt;Create Trigger&lt;/a&gt; for details.
              * @method createTrigger
              * @async
              * @param {String} id Device ID 
@@ -704,7 +700,7 @@
                 request({verb:&quot;POST&quot;, path: Utils.formatURL(&quot;/devices/{1}/triggers&quot;,id), body : trigger, onSuccess : cbS, onError: cbE});
             },
             /**
-             * Gets details of a specific trigger associated with an existing device.
+             * Gets details of a specific trigger associated with an existing device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#View-Trigger&quot;&gt;View Trigger&lt;/a&gt; for details.
              * @method getTriggerDetails
              * @async
              * @param {String} id Device ID 
@@ -719,7 +715,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/devices/{1}/triggers/{2}&quot;,id,triggerId),onSuccess : cbS, onError: cbE});
             },
             /**
-             * Updates an existing trigger associated with the specified device.
+             * Updates an existing trigger associated with the specified device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#Update-Trigger&quot;&gt;Update Trigger&lt;/a&gt; for details.
              * @method updateTrigger
              * @async
              * @param {String} id Device ID 
@@ -736,7 +732,7 @@
                 request({verb:&quot;PUT&quot;, path: Utils.formatURL(&quot;/devices/{1}/triggers/{2}&quot;,id,triggerId), body : trigger, onSuccess : cbS, onError: cbE});
             },
             /**
-             * Tests the specified trigger by firing it with a fake value. See https://m2x.att.com/developer/documentation/v2/device#Test-Trigger for details
+             * Tests the specified trigger by firing it with a fake value. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#Test-Trigger&quot;&gt;Test Trigger&lt;/a&gt; for details.
              * @method testTrigger
              * @async
              * @param {String} id Device ID 
@@ -755,7 +751,7 @@
                 request({verb:&quot;POST&quot;, path: Utils.formatURL(&quot;/devices/{1}/triggers/{2}/test&quot;,id,triggerId), onSuccess : cbS, onError: cbE});        	
             },
             /**
-             * Deletes an existing trigger associated with a specific device.
+             * Deletes an existing trigger associated with a specific device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#Delete-Trigger&quot;&gt;Delete Trigger&lt;/a&gt; for details.
              * @method deleteTrigger
              * @async
              * @param {String} id Device ID 
@@ -773,7 +769,7 @@
                 request({verb:&quot;DELETE&quot;, path: Utils.formatURL(&quot;/devices/{1}/triggers/{2}&quot;,id,triggerId), onSuccess: cbS, onError: cbE});
             },
             /**
-             * Retrieves a list of HTTP requests received lately by the specified device (up to 100 entries).
+             * Retrieves a list of HTTP requests received lately by the specified device (up to 100 entries). See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#View-Request-Log&quot;&gt;View Request Log&lt;/a&gt; for details.
              * @method getRequestsLog
              * @async
              * @param {String} id Device ID 
@@ -798,7 +794,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/devices/{1}/log&quot;,id), urlparams : urlparams, onSuccess: onSuccess, onError: onError});	        	
             },
             /**
-             * Deletes an existing device
+             * Deletes an existing device. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/device#Delete-Device&quot;&gt;Delete Device&lt;/a&gt; for details.
              * @method remove
              * @async
              * @param {String} id Device ID
@@ -820,7 +816,7 @@
          */
         api.distribution = {
             /**
-             * Retrieves list of device distributions accessible by the authenticated API key.
+             * Retrieves list of device distributions accessible by the authenticated API key. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#List-Distributions&quot;&gt;List Distributions&lt;/a&gt; for details.
              * @method search
              * @async
              * @param {Object} [options] Search options.
@@ -841,7 +837,7 @@
                 request({verb:&quot;GET&quot;, path: &quot;/distributions&quot;, urlparams : urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
-             * Creates a new device distribution
+             * Creates a new device distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#Create-Distribution&quot;&gt;Create Distribution&lt;/a&gt; for details.
              * @method create
              * @async
              * @param {Object} distribution Distribution object. An error will be thrown if name(String) or visibility(either &#x27;public&#x27; or &#x27;private&#x27;) are not provided
@@ -854,7 +850,7 @@
                 request({verb:&quot;POST&quot;, path: &quot;/distributions&quot;, body: distribution, onSuccess: cbS, onError: cbE}); 
             },
             /**
-             * Retrieves information about an existing device distribution.
+             * Retrieves information about an existing device distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#View-Distribution-Details&quot;&gt;View Distribution Details&lt;/a&gt; for details.
              * @method getDetails
              * @async
              * @param {String} id Distribution ID
@@ -868,7 +864,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/distributions/{1}&quot;,id), onSuccess : cbS, onError: cbE});
             },
             /**
-             * Updates an existing device distribution&#x27;s information
+             * Updates an existing device distribution&#x27;s information. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#Update-Distribution-Details&quot;&gt;Update Distribution Details&lt;/a&gt; for details.
              * @method update
              * @async
              * @param {String} id Distribution ID
@@ -886,7 +882,7 @@
                 request({verb:&quot;PUT&quot;, path: Utils.formatURL(&quot;/distributions/{1}&quot;,id), body: distribution, onSuccess: cbS, onError: cbE}); 
             },
             /**
-             * Retrieves list of devices added to the specified distribution.
+             * Retrieves list of devices added to the specified distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#List-Devices-from-an-existing-Distribution&quot;&gt;List Devices from an existing Distribution&lt;/a&gt; for details.
              * @method getDevices
              * @async
              * @param {String} id Distribution ID
@@ -911,7 +907,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/distributions/{1}/devices&quot;,id), urlparams : urlparams, onSuccess : onSuccess, onError: onError});
             },
             /**
-             * Adds a new device to an existing distribution.
+             * Adds a new device to an existing distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#Add-Device-to-an-existing-Distribution&quot;&gt;Add Device to an existing Distribution&lt;/a&gt; for details.
              * @method addDevice
              * @async
              * @param {String} id Distribution ID
@@ -937,7 +933,7 @@
                 request({verb:&quot;POST&quot;, path: Utils.formatURL(&quot;/distributions/{1}/devices&quot;,id), body : {serial : serial}, onSuccess : cbS, onError: cbE});
             },            
             /**
-             * Deletes an existing device distribution.
+             * Deletes an existing device distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#Delete-Distribution&quot;&gt;Delete Distribution&lt;/a&gt; for details.
              * @method remove
              * @async
              * @param {String} id Distribution ID
@@ -952,7 +948,7 @@
                 request({verb:&quot;DELETE&quot;, path: Utils.formatURL(&quot;/distributions/{1}&quot;,id), onSuccess: cbS, onError: cbE});
             },
             /**
-             * Retrieves a list of data streams associated with the specified distribution.
+             * Retrieves a list of data streams associated with the specified distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#List-Data-Streams&quot;&gt;List Data Streams&lt;/a&gt; for details.
              * @method getDataStreams
              * @async
              * @param {String} id Distribution ID
@@ -966,12 +962,12 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/distributions/{1}/streams&quot;,id), onSuccess : cbS, onError: cbE});	        	
             },
             /**
-             * Updates a data stream associated with the specified distribution (if a stream with this name does not exist it gets created).
+             * Updates a data stream associated with the specified distribution (if a stream with this name does not exist it gets created). See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#Create-Update-Data-Stream&quot;&gt;Create/Update Data Stream&lt;/a&gt; for details.
              * @method updateStream
              * @async
              * @param {String} id distribution ID
              * @param {String} name Data stream name. No spaces or special characters allowed.
-             * @param {Object} [stream] Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream. See https://m2x.att.com/developer/documentation/v2/distribution#Create-Update-Data-Stream for details.
+             * @param {Object} [stream] Create/Update parameters: unit and type. If no parameters are provided, stream type will be numeric by default and no unit will be associated to this stream.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
@@ -997,7 +993,7 @@
                 request({verb:&quot;PUT&quot;, path: Utils.formatURL(&quot;/distributions/{1}/streams/{2}&quot;,id,name), body : body, onSuccess : onSuccess, onError: onError});
             },
             /**
-             * Gets details of a specific data stream associated with an existing distribution.
+             * Gets details of a specific data stream associated with an existing distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#View-Data-Stream&quot;&gt;View Data Stream&lt;/a&gt; for details.
              * @method getDataStreamDetails
              * @async
              * @param {String} id Distribution ID
@@ -1016,7 +1012,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/distributions/{1}/streams/{2}&quot;,id,name), onSuccess : cbS, onError: cbE});
             },
             /**
-             * Deletes an existing data stream associated with a specific distribution.
+             * Deletes an existing data stream associated with a specific distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/distribution#Delete-Data-Stream&quot;&gt;Delete Data Stream&lt;/a&gt; for details.
              * @method deleteDataStream
              * @async
              * @param {String} id Distribution ID
@@ -1034,11 +1030,11 @@
                 request({verb:&quot;DELETE&quot;, path: Utils.formatURL(&quot;/distributions/{1}/streams/{2}&quot;,id,name), onSuccess : cbS, onError: cbE});
             },
             /**
-             * Retrieves a list of triggers associated with the specified distribution.
+             * Retrieves a list of triggers associated with the specified distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#List-Triggers&quot;&gt;List Triggers&lt;/a&gt; for details.
              * @method getTriggers
              * @async
              * @param {String} id Distribution ID 
-             * @param {Object} [options]  Search options. See https://m2x.att.com/developer/documentation/v2/distribution#List-Triggers for details
+             * @param {Object} [options]  Search options.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
@@ -1059,7 +1055,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/distributions/{1}/triggers&quot;,id), urlparams: urlparams, onSuccess : onSuccess, onError: onError});	        	
             },
             /**
-             * Creates a new trigger associated with the specified distribution.
+             * Creates a new trigger associated with the specified distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#Create-Trigger&quot;&gt;Create Trigger&lt;/a&gt; for details.
              * @method createTrigger
              * @async
              * @param {String} id Distribution ID 
@@ -1076,7 +1072,7 @@
                 request({verb:&quot;POST&quot;, path: Utils.formatURL(&quot;/distributions/{1}/triggers&quot;,id), body : trigger, onSuccess : cbS, onError: cbE});
             },
             /**
-             * Gets details of a specific trigger associated with an existing distribution.
+             * Gets details of a specific trigger associated with an existing distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#View-Trigger&quot;&gt;View Trigger&lt;/a&gt; for details.
              * @method getTriggerDetails
              * @async
              * @param {String} id Distribution ID 
@@ -1091,7 +1087,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/distributions/{1}/triggers/{2}&quot;,id,triggerId),onSuccess : cbS, onError: cbE});
             },
             /**
-             * Updates an existing trigger associated with the specified distribution.
+             * Updates an existing trigger associated with the specified distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#Update-Trigger&quot;&gt;Update Trigger&lt;/a&gt; for details.
              * @method updateTrigger
              * @async
              * @param {String} id Distribution ID 
@@ -1108,7 +1104,7 @@
                 request({verb:&quot;PUT&quot;, path: Utils.formatURL(&quot;/distributions/{1}/triggers/{2}&quot;,id,triggerId), body : trigger, onSuccess : cbS, onError: cbE});
             },
             /**
-             * Tests the specified trigger by firing it with a fake value. See https://m2x.att.com/developer/documentation/v2/distribution#Test-Trigger for details
+             * Tests the specified trigger by firing it with a fake value. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#Test-Trigger&quot;&gt;Test Trigger&lt;/a&gt; for details
              * @method testTrigger
              * @async
              * @param {String} id Distribution ID 
@@ -1127,7 +1123,7 @@
                 request({verb:&quot;POST&quot;, path: Utils.formatURL(&quot;/distributions/{1}/triggers/{2}/test&quot;,id,triggerId), onSuccess : cbS, onError: cbE});        	
             },
             /**
-             * Deletes an existing trigger associated with a specific distribution.
+             * Deletes an existing trigger associated with a specific distribution. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/triggers#Delete-Trigger&quot;&gt;Delete Trigger&lt;/a&gt; for details.
              * @method deleteTrigger
              * @async
              * @param {String} id Distribution ID 
@@ -1153,7 +1149,7 @@
          */
         api.key = {
             /**
-             * Retrieves list of keys associated with the specified account.
+             * Retrieves list of keys associated with the specified account. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/keys#List-Keys&quot;&gt;List Keys&lt;/a&gt; for details.
              * @method search
              * @async
              * @param {String} [deviceID]  If provided, it will list all the keys that are associated with that specific device or its streams
@@ -1174,10 +1170,10 @@
                 request({verb:&quot;GET&quot;, path: &quot;/keys&quot;, urlparams : urlparams, onSuccess: onSuccess, onError: onError});
             },
             /**
-             * Creates a new key associated with the specified account.
+             * Creates a new key associated with the specified account. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/keys#Create-Key&quot;&gt;Create Key&lt;/a&gt; for details.
              * @method create
              * @async
-             * @param {Object} key Key object. An error will be thrown if name(String) or permissions(Array) are not provided. See https://m2x.att.com/developer/documentation/v2/keys#Create-Key for details
+             * @param {Object} key Key object. An error will be thrown if name(String) or permissions(Array) are not provided.
              * @param {Function} onSuccess Function to call back if operation is successful
              * @param {Function} [onError] Function to call back if operation fails
              */
@@ -1191,7 +1187,7 @@
                 request({verb:&quot;POST&quot;, path: &quot;/keys&quot;, body: key, onSuccess: cbS, onError: cbE}); 
             },
             /**
-             * Gets details of a specific key associated with a developer account.
+             * Gets details of a specific key associated with a developer account. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/keys#View-Key-Details&quot;&gt;View Key Details&lt;/a&gt; for details.
              * @method getDetails
              * @async
              * @param {String} key Key ID
@@ -1206,7 +1202,7 @@
                 request({verb:&quot;GET&quot;, path: Utils.formatURL(&quot;/keys/{1}&quot;,key), onSuccess: cbS, onError: cbE});
             },
             /**
-             * Update name, stream, permissions, expiration date, origin or device access of an existing key associated with the specified account
+             * Update name, stream, permissions, expiration date, origin or device access of an existing key associated with the specified account. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/keys#Update-Key&quot;&gt;Update Key&lt;/a&gt; for details.
              * @method update
              * @async
              * @param {String} key Key ID
@@ -1226,7 +1222,7 @@
                 request({verb:&quot;PUT&quot;, path: Utils.formatURL(&quot;/keys/{1}&quot;,id), body : key, onSuccess: cbS, onError: cbE});
             },
             /**
-             * Regenerates the specified key.
+             * Regenerates the specified key. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/keys#Regenerate-Key&quot;&gt;Regenerate Key&lt;/a&gt; for details.
              * @method regenerate
              * @async
              * @param {String} key Key ID
@@ -1241,7 +1237,7 @@
                 request({verb:&quot;POST&quot;, path: Utils.formatURL(&quot;/keys/{1}/regenerate&quot;,id), onSuccess: cbS, onError: cbE});    		
             },
             /**
-             * Deletes an existing key.
+             * Deletes an existing key. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/keys#Delete-Key&quot;&gt;Delete Key&lt;/a&gt; for details.
              * @method remove
              * @async
              * @param {String} key Key ID
@@ -1258,7 +1254,7 @@
         }
 
         /**
-         * Updates the M2X API key currently used by this instance
+         * Updates the M2X API key currently used by this instance.
          * @method setKey
          * @for M2X
          * @param {String} key Key ID. An error will be thrown if key is not a string
@@ -1275,7 +1271,7 @@
    };
         
    /**
-    * Creates a Date instance from a ISO8601 date
+    * Creates a Date instance from a ISO8601 date. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/time&quot;&gt;time&lt;/a&gt; for details.
     * @method fromISO8601toDate 
     * @static
     * @for M2X
@@ -1290,7 +1286,7 @@
     };
 
     /**
-     * Returns a date in ISO8601 format
+     * Returns a date in ISO8601 format. See &lt;a href=&quot;https://m2x.att.com/developer/documentation/v2/time&quot;&gt;time&lt;/a&gt; for details.
      * @method getISO8601Timestamp 
      * @static
      * @for M2X
@@ -1299,11 +1295,12 @@
      */    
     M2XAPI.getISO8601Timestamp = function(timestamp) {
         var t;
-        if (Object.prototype.toString.call(timestamp) === &#x27;[object Date]&#x27; 
-            || (typeof timestamp === &#x27;number&#x27; &amp;&amp; timestamp === (timestamp | 0))) {
-            t = timestamp;
+        if (Object.prototype.toString.call(timestamp) === &#x27;[object Date]&#x27; ) {
+        	t = timestamp;
+        } else if (/^[0-9]+$/.test(&#x27;&#x27;+timestamp)) {
+            t = new Date(timestamp);
         } else {
-            t = new Date.now();
+            t = new Date();
         }
         return t.toISOString();
     };
@@ -1313,7 +1310,6 @@
 }));
     </pre>
 </div>
-
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "M2X.key"
     ],
     "modules": [],
-    "allModules": []
+    "allModules": [],
+    "elements": []
 } };
 });
